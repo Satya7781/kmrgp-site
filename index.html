@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-en="Kshatriya Mewada Rajput Parivar - Preserving Heritage, Uniting Families" data-hi="क्षत्रिय मेवाड़ा राजपूत परिवार - विरासत की रक्षा, परिवारों का मिलन">Kshatriya Mewada Rajput Parivar - Preserving Heritage, Uniting Families</title>
+    <title data-en="Kshatriya Mewada Rajput Parivar - Preserving Heritage, Uniting Families"
+        data-hi="क्षत्रिय मेवाड़ा राजपूत परिवार - विरासत की रक्षा, परिवारों का मिलन">Kshatriya Mewada Rajput Parivar -
+        Preserving Heritage, Uniting Families</title>
     <!-- Linked Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body>
 
     <!-- Toast Alerts Container -->
@@ -24,8 +28,10 @@
             <a href="index.html" class="logo-section">
                 <div class="logo-badge">K</div>
                 <div class="logo-text">
-                    <span class="logo-title" data-en="Kshatriya Mewada Rajput" data-hi="क्षत्रिय मेवाड़ा राजपूत">Kshatriya Mewada Rajput</span>
-                    <span class="logo-subtitle" data-en="Parivar · Uniting Families Since Ancient Times" data-hi="परिवार · परिवारों का पवित्र मिलन">Parivar · Uniting Families Since Ancient Times</span>
+                    <span class="logo-title" data-en="Kshatriya Mewada Rajput"
+                        data-hi="क्षत्रिय मेवाड़ा राजपूत">Kshatriya Mewada Rajput</span>
+                    <span class="logo-subtitle" data-en="Parivar · Uniting Families Since Ancient Times"
+                        data-hi="परिवार · परिवारों का पवित्र मिलन">Parivar · Uniting Families Since Ancient Times</span>
                 </div>
             </a>
 
@@ -33,8 +39,10 @@
             <nav>
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link active" data-en="Home" data-hi="होम">Home</a></li>
-                    <li><a href="profiles.html" class="nav-link" data-en="Find Matches" data-hi="साथी खोजें">Find Matches</a></li>
-                    <li id="nav-dashboard-item" style="display: none;"><a href="dashboard.html" class="nav-link" data-en="My Dashboard" data-hi="मेरा डैशबोर्ड">My Dashboard</a></li>
+                    <li><a href="profiles.html" class="nav-link" data-en="Find Matches" data-hi="साथी खोजें">Find
+                            Matches</a></li>
+                    <li id="nav-dashboard-item" style="display: none;"><a href="dashboard.html" class="nav-link"
+                            data-en="My Dashboard" data-hi="मेरा डैशबोर्ड">My Dashboard</a></li>
                 </ul>
             </nav>
 
@@ -47,8 +55,10 @@
 
                 <!-- Guest Actions -->
                 <div id="guest-actions" class="nav-guest-actions">
-                    <button class="btn-nav btn-outline-nav" data-en="Login" data-hi="लॉग इन" onclick="openAuthModal('login')">Login</button>
-                    <button class="btn-nav btn-primary-nav" data-en="Join Free" data-hi="निःशुल्क जुड़ें" onclick="openAuthModal('register')">
+                    <button class="btn-nav btn-outline-nav" data-en="Login" data-hi="लॉग इन"
+                        onclick="openAuthModal('login')">Login</button>
+                    <button class="btn-nav btn-primary-nav" data-en="Join Free" data-hi="निःशुल्क जुड़ें"
+                        onclick="openAuthModal('register')">
                         <i data-lucide="sparkles" style="width:14px;height:14px;"></i>
                         <span data-en="Join Free" data-hi="निःशुल्क जुड़ें">Join Free</span>
                     </button>
@@ -57,17 +67,22 @@
                 <!-- Logged In Actions -->
                 <div id="user-actions" class="nav-user-actions">
                     <div class="user-profile-chip">
-                        <img src="https://picsum.photos/seed/arjun-singh/100/100.jpg" alt="User Avatar" class="user-chip-avatar">
+                        <img src="https://picsum.photos/seed/arjun-singh/100/100.jpg" alt="User Avatar"
+                            class="user-chip-avatar">
                         <div class="user-chip-info">
-                            <span class="user-chip-name" data-en="Kunwar Arjun Mewada" data-hi="कुंवर अर्जुन मेवाड़ा">Kunwar Arjun Mewada</span>
-                            <span class="user-chip-status" data-en="✓ Verified Profile" data-hi="✓ सत्यापित प्रोफ़ाइल">✓ Verified Profile</span>
+                            <span class="user-chip-name" data-en="Kunwar Arjun Mewada"
+                                data-hi="कुंवर अर्जुन मेवाड़ा">Kunwar Arjun Mewada</span>
+                            <span class="user-chip-status" data-en="✓ Verified Profile" data-hi="✓ सत्यापित प्रोफ़ाइल">✓
+                                Verified Profile</span>
                         </div>
                     </div>
-                    <button class="btn-nav btn-outline-nav" data-en="Log Out" data-hi="लॉग आउट" onclick="handleLogout()">Log Out</button>
+                    <button class="btn-nav btn-outline-nav" data-en="Log Out" data-hi="लॉग आउट"
+                        onclick="handleLogout()">Log Out</button>
                 </div>
 
                 <!-- Mobile menu toggle -->
-                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Open menu" id="mobile-toggle-btn">
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Open menu"
+                    id="mobile-toggle-btn">
                     <i data-lucide="menu" style="width: 22px; height: 22px;"></i>
                 </button>
             </div>
@@ -83,21 +98,29 @@
             </button>
         </div>
         <ul class="mobile-nav-list">
-            <li><a href="index.html" class="mobile-nav-link active" data-en="🏠 Home" data-hi="🏠 होम" onclick="toggleMobileMenu()">🏠 Home</a></li>
-            <li><a href="profiles.html" class="mobile-nav-link" data-en="🔍 Find Matches" data-hi="🔍 साथी खोजें" onclick="toggleMobileMenu()">🔍 Find Matches</a></li>
-            <li id="mobile-nav-dashboard" style="display: none;"><a href="dashboard.html" class="mobile-nav-link" data-en="👤 My Dashboard" data-hi="👤 मेरा डैशबोर्ड" onclick="toggleMobileMenu()">👤 My Dashboard</a></li>
+            <li><a href="index.html" class="mobile-nav-link active" data-en="🏠 Home" data-hi="🏠 होम"
+                    onclick="toggleMobileMenu()">🏠 Home</a></li>
+            <li><a href="profiles.html" class="mobile-nav-link" data-en="🔍 Find Matches" data-hi="🔍 साथी खोजें"
+                    onclick="toggleMobileMenu()">🔍 Find Matches</a></li>
+            <li id="mobile-nav-dashboard" style="display: none;"><a href="dashboard.html" class="mobile-nav-link"
+                    data-en="👤 My Dashboard" data-hi="👤 मेरा डैशबोर्ड" onclick="toggleMobileMenu()">👤 My
+                    Dashboard</a></li>
         </ul>
         <div class="mobile-drawer-divider"></div>
         <div class="mobile-actions" id="mobile-guest-actions">
-            <button class="btn-large btn-outline" data-en="Login" data-hi="लॉग इन" onclick="toggleMobileMenu(); openAuthModal('login')">Login</button>
-            <button class="btn-large btn-primary" data-en="Join Parivar — Free" data-hi="परिवार से जुड़ें" onclick="toggleMobileMenu(); openAuthModal('register')">Join Parivar — Free</button>
+            <button class="btn-large btn-outline" data-en="Login" data-hi="लॉग इन"
+                onclick="toggleMobileMenu(); openAuthModal('login')">Login</button>
+            <button class="btn-large btn-primary" data-en="Join Parivar — Free" data-hi="परिवार से जुड़ें"
+                onclick="toggleMobileMenu(); openAuthModal('register')">Join Parivar — Free</button>
         </div>
         <div class="mobile-actions" id="mobile-user-actions" style="display: none;">
-            <button class="btn-large btn-outline" data-en="Log Out" data-hi="लॉग आउट" onclick="toggleMobileMenu(); handleLogout()">Log Out</button>
+            <button class="btn-large btn-outline" data-en="Log Out" data-hi="लॉग आउट"
+                onclick="toggleMobileMenu(); handleLogout()">Log Out</button>
         </div>
         <div class="mobile-drawer-trust">
             <span>🛡️</span>
-            <span data-en="Trusted by 10,000+ Rajput families" data-hi="10,000+ राजपूत परिवारों का विश्वास">Trusted by 10,000+ Rajput families</span>
+            <span data-en="Trusted by 10,000+ Rajput families" data-hi="10,000+ राजपूत परिवारों का विश्वास">Trusted by
+                10,000+ Rajput families</span>
         </div>
     </div>
 
@@ -110,11 +133,19 @@
             <!-- Heritage Badge -->
             <div class="hero-heritage-badge">
                 <span class="hero-badge-dot"></span>
-                <span data-en="Exclusively for Kshatriya Mewada Rajput Families" data-hi="क्षत्रिय मेवाड़ा राजपूत परिवारों के लिए विशेष">Exclusively for Kshatriya Mewada Rajput Families</span>
+                <span data-en="Exclusively for Kshatriya Mewada Rajput Families"
+                    data-hi="क्षत्रिय मेवाड़ा राजपूत परिवारों के लिए विशेष">Exclusively for Kshatriya Mewada Rajput
+                    Families</span>
             </div>
 
-            <h1 class="hero-title" data-en="Where Sacred Lineage Meets Lifelong Union" data-hi="जहाँ पवित्र वंश और जीवनसाथी का मिलन होता है">Where Sacred Lineage Meets<br class="hero-title-break"> Lifelong Union</h1>
-            <p class="hero-desc" data-en="India's most trusted matrimony community for Mewada &amp; Rajput families — built on Gotra verification, elder oversight, and the timeless values of our warrior heritage." data-hi="भारत का सबसे विश्वसनीय विवाह समुदाय — गोत्र सत्यापन, बुजुर्गों की निगरानी और वीर विरासत के शाश्वत मूल्यों पर निर्मित।">India's most trusted matrimony community for Mewada &amp; Rajput families — built on Gotra verification, elder oversight, and the timeless values of our warrior heritage.</p>
+            <h1 class="hero-title" data-en="Where Sacred Lineage Meets Lifelong Union"
+                data-hi="जहाँ पवित्र वंश और जीवनसाथी का मिलन होता है">Where Sacred Lineage Meets<br
+                    class="hero-title-break"> Lifelong Union</h1>
+            <p class="hero-desc"
+                data-en="India's most trusted matrimony community for Mewada &amp; Rajput families — built on Gotra verification, elder oversight, and the timeless values of our warrior heritage."
+                data-hi="भारत का सबसे विश्वसनीय विवाह समुदाय — गोत्र सत्यापन, बुजुर्गों की निगरानी और वीर विरासत के शाश्वत मूल्यों पर निर्मित।">
+                India's most trusted matrimony community for Mewada &amp; Rajput families — built on Gotra verification,
+                elder oversight, and the timeless values of our warrior heritage.</p>
 
             <!-- Hero Trust Badges -->
             <div class="hero-trust-badges">
@@ -137,7 +168,8 @@
             <div class="hero-cta-row">
                 <a href="profiles.html" class="btn-large btn-primary">
                     <i data-lucide="search"></i>
-                    <span data-en="Browse Verified Profiles" data-hi="सत्यापित प्रोफ़ाइल देखें">Browse Verified Profiles</span>
+                    <span data-en="Browse Verified Profiles" data-hi="सत्यापित प्रोफ़ाइल देखें">Browse Verified
+                        Profiles</span>
                 </a>
                 <a href="#why-parivar" class="btn-large btn-gold">
                     <i data-lucide="landmark"></i>
@@ -149,7 +181,8 @@
             <div class="hero-stats-row">
                 <div class="hero-stat-item">
                     <div class="hero-stat-number" id="count-profiles">8,500+</div>
-                    <div class="hero-stat-label" data-en="Verified Profiles" data-hi="सत्यापित प्रोफ़ाइल">Verified Profiles</div>
+                    <div class="hero-stat-label" data-en="Verified Profiles" data-hi="सत्यापित प्रोफ़ाइल">Verified
+                        Profiles</div>
                 </div>
                 <div class="hero-stat-item">
                     <div class="hero-stat-number" id="count-unions">1,200+</div>
@@ -157,11 +190,13 @@
                 </div>
                 <div class="hero-stat-item">
                     <div class="hero-stat-number" id="count-families">10,000+</div>
-                    <div class="hero-stat-label" data-en="Trusted Families" data-hi="विश्वासी परिवार">Trusted Families</div>
+                    <div class="hero-stat-label" data-en="Trusted Families" data-hi="विश्वासी परिवार">Trusted Families
+                    </div>
                 </div>
                 <div class="hero-stat-item">
                     <div class="hero-stat-number">15+</div>
-                    <div class="hero-stat-label" data-en="Years of Service" data-hi="सेवा के वर्ष">Years of Service</div>
+                    <div class="hero-stat-label" data-en="Years of Service" data-hi="सेवा के वर्ष">Years of Service
+                    </div>
                 </div>
             </div>
         </div>
@@ -178,24 +213,34 @@
             <div class="hiw-step">
                 <div class="hiw-step-num">01</div>
                 <div class="hiw-step-content">
-                    <h3 class="hiw-step-title" data-en="Register Your Family" data-hi="परिवार पंजीकृत करें">Register Your Family</h3>
-                    <p class="hiw-step-desc" data-en="Submit gotra details and family background for review" data-hi="गोत्र विवरण और पारिवारिक पृष्ठभूमि जमा करें">Submit gotra details and family background for review</p>
+                    <h3 class="hiw-step-title" data-en="Register Your Family" data-hi="परिवार पंजीकृत करें">Register
+                        Your Family</h3>
+                    <p class="hiw-step-desc" data-en="Submit gotra details and family background for review"
+                        data-hi="गोत्र विवरण और पारिवारिक पृष्ठभूमि जमा करें">Submit gotra details and family background
+                        for review</p>
                 </div>
             </div>
             <div class="hiw-step-arrow">→</div>
             <div class="hiw-step">
                 <div class="hiw-step-num">02</div>
                 <div class="hiw-step-content">
-                    <h3 class="hiw-step-title" data-en="Get Elder Verified" data-hi="बुजुर्गों से सत्यापित हों">Get Elder Verified</h3>
-                    <p class="hiw-step-desc" data-en="Community elders cross-check lineage using Vanshavali records" data-hi="समुदाय के बुजुर्ग वंशावली से वंश की जांच करते हैं">Community elders cross-check lineage using Vanshavali records</p>
+                    <h3 class="hiw-step-title" data-en="Get Elder Verified" data-hi="बुजुर्गों से सत्यापित हों">Get
+                        Elder Verified</h3>
+                    <p class="hiw-step-desc" data-en="Community elders cross-check lineage using Vanshavali records"
+                        data-hi="समुदाय के बुजुर्ग वंशावली से वंश की जांच करते हैं">Community elders cross-check lineage
+                        using Vanshavali records</p>
                 </div>
             </div>
             <div class="hiw-step-arrow">→</div>
             <div class="hiw-step">
                 <div class="hiw-step-num">03</div>
                 <div class="hiw-step-content">
-                    <h3 class="hiw-step-title" data-en="Connect with Dignity" data-hi="गरिमा के साथ जुड़ें">Connect with Dignity</h3>
-                    <p class="hiw-step-desc" data-en="Browse verified profiles and connect with families that share your values" data-hi="सत्यापित प्रोफाइल देखें और समान मूल्यों वाले परिवारों से जुड़ें">Browse verified profiles and connect with families that share your values</p>
+                    <h3 class="hiw-step-title" data-en="Connect with Dignity" data-hi="गरिमा के साथ जुड़ें">Connect with
+                        Dignity</h3>
+                    <p class="hiw-step-desc"
+                        data-en="Browse verified profiles and connect with families that share your values"
+                        data-hi="सत्यापित प्रोफाइल देखें और समान मूल्यों वाले परिवारों से जुड़ें">Browse verified
+                        profiles and connect with families that share your values</p>
                 </div>
             </div>
         </div>
@@ -203,39 +248,69 @@
 
     <section class="search-section" id="why-parivar" style="margin-top: 64px;">
         <div style="text-align: center; margin-bottom: 44px;">
-            <div style="display: inline-flex; align-items: center; gap: 10px; color: var(--color-saffron); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 14px;">
-                <span style="width: 32px; height: 1.5px; background: linear-gradient(90deg, transparent, var(--color-saffron));"></span>
-                <span data-en="Ancestral Trust &amp; Lineage" data-hi="वंश और परम्परा">Ancestral Trust &amp; Lineage</span>
-                <span style="width: 32px; height: 1.5px; background: linear-gradient(90deg, var(--color-saffron), transparent);"></span>
+            <div
+                style="display: inline-flex; align-items: center; gap: 10px; color: var(--color-saffron); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 14px;">
+                <span
+                    style="width: 32px; height: 1.5px; background: linear-gradient(90deg, transparent, var(--color-saffron));"></span>
+                <span data-en="Ancestral Trust &amp; Lineage" data-hi="वंश और परम्परा">Ancestral Trust &amp;
+                    Lineage</span>
+                <span
+                    style="width: 32px; height: 1.5px; background: linear-gradient(90deg, var(--color-saffron), transparent);"></span>
             </div>
-            <h2 style="font-size: 34px; font-weight: 800; color: var(--color-maroon); margin-bottom: 12px;" data-en="Built Exclusively for Our Community" data-hi="हमारे समुदाय के लिए विशेष रूप से निर्मित">Built Exclusively for Our Community</h2>
-            <p style="color: var(--color-text-muted); max-width: 580px; margin: 0 auto; font-size: 16px; line-height: 1.7;" data-en="Our platform is exclusively built to uphold the dignity, lineage values, and family preferences of Mewada and Rajput clans — with verified profiles and elder oversight." data-hi="हमारा मंच विशेष रूप से मेवाड़ा और राजपूत परिवारों की गरिमा, वंश मूल्यों और पारिवारिक प्राथमिकताओं को बनाए रखने के लिए बनाया गया है।">Our platform is exclusively built to uphold the dignity, lineage values, and family preferences of Mewada and Rajput clans — with verified profiles and elder oversight.</p>
+            <h2 style="font-size: 34px; font-weight: 800; color: var(--color-maroon); margin-bottom: 12px;"
+                data-en="Built Exclusively for Our Community" data-hi="हमारे समुदाय के लिए विशेष रूप से निर्मित">Built
+                Exclusively for Our Community</h2>
+            <p style="color: var(--color-text-muted); max-width: 580px; margin: 0 auto; font-size: 16px; line-height: 1.7;"
+                data-en="Our platform is exclusively built to uphold the dignity, lineage values, and family preferences of Mewada and Rajput clans — with verified profiles and elder oversight."
+                data-hi="हमारा मंच विशेष रूप से मेवाड़ा और राजपूत परिवारों की गरिमा, वंश मूल्यों और पारिवारिक प्राथमिकताओं को बनाए रखने के लिए बनाया गया है।">
+                Our platform is exclusively built to uphold the dignity, lineage values, and family preferences of
+                Mewada and Rajput clans — with verified profiles and elder oversight.</p>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-bottom: 36px;">
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-bottom: 36px;">
             <!-- Legacy Card 1 -->
-            <div class="stat-card" style="flex-direction: column; align-items: flex-start; text-align: left; padding: 32px;">
+            <div class="stat-card"
+                style="flex-direction: column; align-items: flex-start; text-align: left; padding: 32px;">
                 <div class="stat-icon-wrapper" style="margin-bottom: 18px; width: 56px; height: 56px;">
                     <i data-lucide="shield-check" style="width: 28px; height: 28px;"></i>
                 </div>
-                <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 10px; color: var(--color-maroon);" data-en="Strict Gotra Verification" data-hi="सख्त गोत्र सत्यापन">Strict Gotra Verification</h3>
-                <p style="font-size: 15px; color: var(--color-text-muted); line-height: 1.65;" data-en="Every applicant profile is manually checked for gotras — Self, Mother, Dadi, Nani — to preserve our sacred lineage rules." data-hi="कुल वंश नियमों की रक्षा के लिए प्रत्येक आवेदक प्रोफ़ाइल के गोत्र की मैन्युअल रूप से जांच की जाती है।">Every applicant profile is manually checked for gotras — Self, Mother, Dadi, Nani — to preserve our sacred lineage rules.</p>
+                <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 10px; color: var(--color-maroon);"
+                    data-en="Strict Gotra Verification" data-hi="सख्त गोत्र सत्यापन">Strict Gotra Verification</h3>
+                <p style="font-size: 15px; color: var(--color-text-muted); line-height: 1.65;"
+                    data-en="Every applicant profile is manually checked for gotras — Self, Mother, Dadi, Nani — to preserve our sacred lineage rules."
+                    data-hi="कुल वंश नियमों की रक्षा के लिए प्रत्येक आवेदक प्रोफ़ाइल के गोत्र की मैन्युअल रूप से जांच की जाती है।">
+                    Every applicant profile is manually checked for gotras — Self, Mother, Dadi, Nani — to preserve our
+                    sacred lineage rules.</p>
             </div>
             <!-- Legacy Card 2 -->
-            <div class="stat-card saffron" style="flex-direction: column; align-items: flex-start; text-align: left; padding: 32px;">
+            <div class="stat-card saffron"
+                style="flex-direction: column; align-items: flex-start; text-align: left; padding: 32px;">
                 <div class="stat-icon-wrapper" style="margin-bottom: 18px; width: 56px; height: 56px;">
                     <i data-lucide="users" style="width: 28px; height: 28px;"></i>
                 </div>
-                <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 10px; color: var(--color-maroon);" data-en="Family-Centric Connections" data-hi="पारिवारिक-केंद्रित संबंध">Family-Centric Connections</h3>
-                <p style="font-size: 15px; color: var(--color-text-muted); line-height: 1.65;" data-en="Unlike generic matrimony portals, profiles here are managed by families directly — ensuring respectful and dignified communication at all times." data-hi="सामान्य पोर्टल्स के विपरीत, हमारी प्रोफाइल सीधे परिवारों द्वारा प्रबंधित की जाती हैं, जिससे सम्मानजनक बातचीत सुनिश्चित होती है।">Unlike generic matrimony portals, profiles here are managed by families directly — ensuring respectful and dignified communication at all times.</p>
+                <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 10px; color: var(--color-maroon);"
+                    data-en="Family-Centric Connections" data-hi="पारिवारिक-केंद्रित संबंध">Family-Centric Connections
+                </h3>
+                <p style="font-size: 15px; color: var(--color-text-muted); line-height: 1.65;"
+                    data-en="Unlike generic matrimony portals, profiles here are managed by families directly — ensuring respectful and dignified communication at all times."
+                    data-hi="सामान्य पोर्टल्स के विपरीत, हमारी प्रोफाइल सीधे परिवारों द्वारा प्रबंधित की जाती हैं, जिससे सम्मानजनक बातचीत सुनिश्चित होती है।">
+                    Unlike generic matrimony portals, profiles here are managed by families directly — ensuring
+                    respectful and dignified communication at all times.</p>
             </div>
             <!-- Legacy Card 3 -->
-            <div class="stat-card gold" style="flex-direction: column; align-items: flex-start; text-align: left; padding: 32px;">
+            <div class="stat-card gold"
+                style="flex-direction: column; align-items: flex-start; text-align: left; padding: 32px;">
                 <div class="stat-icon-wrapper" style="margin-bottom: 18px; width: 56px; height: 56px;">
                     <i data-lucide="lock" style="width: 28px; height: 28px;"></i>
                 </div>
-                <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 10px; color: var(--color-maroon);" data-en="Absolute Privacy Controls" data-hi="पूर्ण गोपनीयता नियंत्रण">Absolute Privacy Controls</h3>
-                <p style="font-size: 15px; color: var(--color-text-muted); line-height: 1.65;" data-en="Sensitive details, gotra charts, and photos are hidden from the public and visible only to families with verified profiles." data-hi="संवेदनशील जानकारी, गोत्र चार्ट और चित्र जनता से छिपे हुए हैं, केवल सत्यापित परिवारों को ही दिखाई देते हैं।">Sensitive details, gotra charts, and photos are hidden from the public and visible only to families with verified profiles.</p>
+                <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 10px; color: var(--color-maroon);"
+                    data-en="Absolute Privacy Controls" data-hi="पूर्ण गोपनीयता नियंत्रण">Absolute Privacy Controls</h3>
+                <p style="font-size: 15px; color: var(--color-text-muted); line-height: 1.65;"
+                    data-en="Sensitive details, gotra charts, and photos are hidden from the public and visible only to families with verified profiles."
+                    data-hi="संवेदनशील जानकारी, गोत्र चार्ट और चित्र जनता से छिपे हुए हैं, केवल सत्यापित परिवारों को ही दिखाई देते हैं।">
+                    Sensitive details, gotra charts, and photos are hidden from the public and visible only to families
+                    with verified profiles.</p>
             </div>
         </div>
 
@@ -252,30 +327,48 @@
     <!-- ============================================ -->
     <section class="search-section" id="verification-process" style="margin-top: 64px;">
         <div style="text-align: center; margin-bottom: 44px;">
-            <div style="display: inline-flex; align-items: center; gap: 10px; color: var(--color-saffron); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 14px;">
-                <span style="width: 32px; height: 1.5px; background: linear-gradient(90deg, transparent, var(--color-saffron));"></span>
+            <div
+                style="display: inline-flex; align-items: center; gap: 10px; color: var(--color-saffron); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 14px;">
+                <span
+                    style="width: 32px; height: 1.5px; background: linear-gradient(90deg, transparent, var(--color-saffron));"></span>
                 <span data-en="Lineage Integrity" data-hi="कुल की अखंडता">Lineage Integrity</span>
-                <span style="width: 32px; height: 1.5px; background: linear-gradient(90deg, var(--color-saffron), transparent);"></span>
+                <span
+                    style="width: 32px; height: 1.5px; background: linear-gradient(90deg, var(--color-saffron), transparent);"></span>
             </div>
-            <h2 style="font-size: 34px; font-weight: 800; color: var(--color-maroon); margin-bottom: 12px;" data-en="How Our Ancestry Gotra Verification Works" data-hi="वंश गोत्र सत्यापन कैसे कार्य करता है">How Our Ancestry Gotra Verification Works</h2>
-            <p style="color: var(--color-text-muted); max-width: 600px; margin: 0 auto; font-size: 16px; line-height: 1.7;" data-en="To preserve our lineage guidelines and traditional values, every applicant must pass a strict verification process overseen by respected Mewar community elders." data-hi="हमारे वंश दिशानिर्देशों और पारंपरिक मूल्यों को बनाए रखने के लिए, प्रत्येक आवेदक को मेवाड़ समुदाय के बुजुर्गों द्वारा प्रबंधित एक सख्त सत्यापन प्रक्रिया से गुजरना होगा।">To preserve our lineage guidelines and traditional values, every applicant must pass a strict verification process overseen by respected Mewar community elders.</p>
+            <h2 style="font-size: 34px; font-weight: 800; color: var(--color-maroon); margin-bottom: 12px;"
+                data-en="How Our Ancestry Gotra Verification Works" data-hi="वंश गोत्र सत्यापन कैसे कार्य करता है">How
+                Our Ancestry Gotra Verification Works</h2>
+            <p style="color: var(--color-text-muted); max-width: 600px; margin: 0 auto; font-size: 16px; line-height: 1.7;"
+                data-en="To preserve our lineage guidelines and traditional values, every applicant must pass a strict verification process overseen by respected Mewar community elders."
+                data-hi="हमारे वंश दिशानिर्देशों और पारंपरिक मूल्यों को बनाए रखने के लिए, प्रत्येक आवेदक को मेवाड़ समुदाय के बुजुर्गों द्वारा प्रबंधित एक सख्त सत्यापन प्रक्रिया से गुजरना होगा।">
+                To preserve our lineage guidelines and traditional values, every applicant must pass a strict
+                verification process overseen by respected Mewar community elders.</p>
         </div>
 
         <div class="timeline-container">
             <div class="timeline-step">
                 <div class="timeline-badge">1</div>
                 <h3 data-en="Gotra Details Submission" data-hi="गोत्र विवरण जमा करना">Gotra Details Submission</h3>
-                <p data-en="Applicants provide complete gotra charts covering Self, Mother, Paternal Grandmother (Dadi), and Maternal Grandmother (Nani) for full lineage mapping." data-hi="आवेदक स्वयं, माता, दादी और नानी को कवर करने वाले पूर्ण गोत्र चार्ट प्रदान करते हैं।">Applicants provide complete gotra charts covering Self, Mother, Paternal Grandmother (Dadi), and Maternal Grandmother (Nani) for full lineage mapping.</p>
+                <p data-en="Applicants provide complete gotra charts covering Self, Mother, Paternal Grandmother (Dadi), and Maternal Grandmother (Nani) for full lineage mapping."
+                    data-hi="आवेदक स्वयं, माता, दादी और नानी को कवर करने वाले पूर्ण गोत्र चार्ट प्रदान करते हैं।">
+                    Applicants provide complete gotra charts covering Self, Mother, Paternal Grandmother (Dadi), and
+                    Maternal Grandmother (Nani) for full lineage mapping.</p>
             </div>
             <div class="timeline-step">
                 <div class="timeline-badge">2</div>
                 <h3 data-en="Elders Manual Review" data-hi="बुजुर्गों द्वारा सत्यापन">Elders Manual Review</h3>
-                <p data-en="Mewada Rajput community elders manually cross-verify all details with ancestral charts (Vanshavali) to confirm authentic and undisputed lineages." data-hi="मेवाड़ा राजपूत समुदाय के बुजुर्ग प्रामाणिक वंश की पुष्टि करने के लिए पैतृक चार्ट (वंशावली) के साथ विवरणों का मैन्युअल रूप से सत्यापन करते हैं।">Mewada Rajput community elders manually cross-verify all details with ancestral charts (Vanshavali) to confirm authentic and undisputed lineages.</p>
+                <p data-en="Mewada Rajput community elders manually cross-verify all details with ancestral charts (Vanshavali) to confirm authentic and undisputed lineages."
+                    data-hi="मेवाड़ा राजपूत समुदाय के बुजुर्ग प्रामाणिक वंश की पुष्टि करने के लिए पैतृक चार्ट (वंशावली) के साथ विवरणों का मैन्युअल रूप से सत्यापन करते हैं।">
+                    Mewada Rajput community elders manually cross-verify all details with ancestral charts (Vanshavali)
+                    to confirm authentic and undisputed lineages.</p>
             </div>
             <div class="timeline-step">
                 <div class="timeline-badge">3</div>
                 <h3 data-en="Verified Profile Badge" data-hi="सत्यापित प्रोफ़ाइल बैज">Verified Profile Badge</h3>
-                <p data-en="Upon elder approval, the profile receives an official Verified Shield badge and becomes visible to other registered and verified community members." data-hi="स्वीकृति मिलने पर, प्रोफ़ाइल को एक सत्यापित शील्ड बैज मिलता है और इसे अन्य पंजीकृत सदस्यों को दिखाया जाता है।">Upon elder approval, the profile receives an official Verified Shield badge and becomes visible to other registered and verified community members.</p>
+                <p data-en="Upon elder approval, the profile receives an official Verified Shield badge and becomes visible to other registered and verified community members."
+                    data-hi="स्वीकृति मिलने पर, प्रोफ़ाइल को एक सत्यापित शील्ड बैज मिलता है और इसे अन्य पंजीकृत सदस्यों को दिखाया जाता है।">
+                    Upon elder approval, the profile receives an official Verified Shield badge and becomes visible to
+                    other registered and verified community members.</p>
             </div>
         </div>
     </section>
@@ -283,11 +376,18 @@
     <!-- ============================================ -->
     <!-- HERITAGE HISTORY SECTION -->
     <!-- ============================================ -->
-    <section class="values-strip" style="background: linear-gradient(135deg, var(--color-maroon), var(--color-maroon-hover));">
+    <section class="values-strip"
+        style="background: linear-gradient(135deg, var(--color-maroon), var(--color-maroon-hover));">
         <div class="values-container" style="max-width: 800px;">
             <div style="font-size: 36px; margin-bottom: 16px;">🏛️</div>
-            <h2 class="values-title" style="margin-bottom: 16px;" data-en="The Pride of Mewar — Our Living Heritage" data-hi="मेवाड़ का गौरव — हमारी जीवंत विरासत">The Pride of Mewar — Our Living Heritage</h2>
-            <p style="color: var(--color-cream-dark); line-height: 1.8; font-size: 16px; font-weight: 300;" data-en="Our roots trace back to Maharana Pratap — the eternal symbol of Rajput courage and sacrifice. This platform honours that legacy by ensuring every union is formed within verified clans, upholding the sacred code of bravery, respect, and tradition for generations to come." data-hi="हमारी जड़ें महाराणा प्रताप तक जाती हैं — राजपूत साहस और बलिदान के शाश्वत प्रतीक। यह मंच उस विरासत का सम्मान करते हुए सुनिश्चित करता है कि हर विवाह सत्यापित कुलों में हो, जिससे वीरता, सम्मान और परंपरा की पवित्र परंपरा आगे बढ़ती रहे।">Our roots trace back to Maharana Pratap — the eternal symbol of Rajput courage and sacrifice. This platform honours that legacy by ensuring every union is formed within verified clans, upholding the sacred code of bravery, respect, and tradition for generations to come.</p>
+            <h2 class="values-title" style="margin-bottom: 16px;" data-en="The Pride of Mewar — Our Living Heritage"
+                data-hi="मेवाड़ का गौरव — हमारी जीवंत विरासत">The Pride of Mewar — Our Living Heritage</h2>
+            <p style="color: var(--color-cream-dark); line-height: 1.8; font-size: 16px; font-weight: 300;"
+                data-en="Our roots trace back to Maharana Pratap — the eternal symbol of Rajput courage and sacrifice. This platform honours that legacy by ensuring every union is formed within verified clans, upholding the sacred code of bravery, respect, and tradition for generations to come."
+                data-hi="हमारी जड़ें महाराणा प्रताप तक जाती हैं — राजपूत साहस और बलिदान के शाश्वत प्रतीक। यह मंच उस विरासत का सम्मान करते हुए सुनिश्चित करता है कि हर विवाह सत्यापित कुलों में हो, जिससे वीरता, सम्मान और परंपरा की पवित्र परंपरा आगे बढ़ती रहे।">
+                Our roots trace back to Maharana Pratap — the eternal symbol of Rajput courage and sacrifice. This
+                platform honours that legacy by ensuring every union is formed within verified clans, upholding the
+                sacred code of bravery, respect, and tradition for generations to come.</p>
             <div class="mandala-divider"><span>❋</span></div>
         </div>
     </section>
@@ -297,22 +397,31 @@
     <!-- ============================================ -->
     <section class="matches-section" id="featured-matches-section" style="margin-top: 60px; margin-bottom: 40px;">
         <div style="text-align: center; margin-bottom: 40px;">
-            <div style="display: inline-flex; align-items: center; gap: 8px; color: var(--color-saffron); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">
+            <div
+                style="display: inline-flex; align-items: center; gap: 8px; color: var(--color-saffron); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">
                 <span style="width: 24px; height: 1px; background-color: var(--color-saffron);"></span>
                 <span data-en="Featured Profiles" data-hi="विशेष प्रोफ़ाइल">Featured Profiles</span>
                 <span style="width: 24px; height: 1px; background-color: var(--color-saffron);"></span>
             </div>
-            <h2 style="font-size: 32px; font-weight: 700; color: var(--color-maroon);" data-en="Meet Verified Mewada & Rajput Matches" data-hi="सत्यापित मेवाड़ा और राजपूत वर-वधू से मिलें">Meet Verified Mewada & Rajput Matches</h2>
-            <p style="color: var(--color-text-muted); max-width: 600px; margin: 8px auto 0 auto; font-size: 16px;" data-en="Explore a preview of verified active profiles from our community. Register or log in to unlock gotra charts and contact details." data-hi="हमारे समुदाय से सत्यापित सक्रिय प्रोफाइल का एक पूर्वावलोकन देखें। गोत्र चार्ट और संपर्क विवरण अनलॉक करने के लिए पंजीकृत या लॉगिन करें।">Explore a preview of verified active profiles from our community. Register or log in to unlock gotra charts and contact details.</p>
+            <h2 style="font-size: 32px; font-weight: 700; color: var(--color-maroon);"
+                data-en="Meet Verified Mewada & Rajput Matches" data-hi="सत्यापित मेवाड़ा और राजपूत वर-वधू से मिलें">
+                Meet Verified Mewada & Rajput Matches</h2>
+            <p style="color: var(--color-text-muted); max-width: 600px; margin: 8px auto 0 auto; font-size: 16px;"
+                data-en="Explore a preview of verified active profiles from our community. Register or log in to unlock gotra charts and contact details."
+                data-hi="हमारे समुदाय से सत्यापित सक्रिय प्रोफाइल का एक पूर्वावलोकन देखें। गोत्र चार्ट और संपर्क विवरण अनलॉक करने के लिए पंजीकृत या लॉगिन करें।">
+                Explore a preview of verified active profiles from our community. Register or log in to unlock gotra
+                charts and contact details.</p>
         </div>
 
         <!-- Cards container rendered dynamically by index.js -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(285px, 1fr)); gap: 24px;" id="featured-profiles-grid">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(285px, 1fr)); gap: 24px;"
+            id="featured-profiles-grid">
             <!-- Rendered dynamically by renderFeaturedMatches() in index.js -->
         </div>
 
         <div style="text-align: center; margin-top: 36px;">
-            <a href="profiles.html" class="btn-large btn-primary" style="display: inline-flex; align-items: center; gap: 8px; justify-content: center; min-width: 220px;">
+            <a href="profiles.html" class="btn-large btn-primary"
+                style="display: inline-flex; align-items: center; gap: 8px; justify-content: center; min-width: 220px;">
                 <i data-lucide="search" style="width: 20px; height: 20px;"></i>
                 <span data-en="Search All Matches" data-hi="सभी मैच खोजें">Search All Matches</span>
             </a>
@@ -325,8 +434,13 @@
     <section class="join-cta-section">
         <div class="join-cta-container">
             <div class="join-cta-text">
-                <h2 class="join-cta-title" data-en="Ready to Find Your Life Partner?" data-hi="अपना जीवनसाथी खोजने के लिए तैयार हैं?">Ready to Find Your Life Partner?</h2>
-                <p class="join-cta-desc" data-en="Join thousands of Rajput families who have already found their perfect match through our trusted platform." data-hi="हजारों राजपूत परिवारों से जुड़ें जो पहले से ही हमारे विश्वसनीय मंच के माध्यम से अपना आदर्श जोड़ा पा चुके हैं।">Join thousands of Rajput families who have already found their perfect match through our trusted platform.</p>
+                <h2 class="join-cta-title" data-en="Ready to Find Your Life Partner?"
+                    data-hi="अपना जीवनसाथी खोजने के लिए तैयार हैं?">Ready to Find Your Life Partner?</h2>
+                <p class="join-cta-desc"
+                    data-en="Join thousands of Rajput families who have already found their perfect match through our trusted platform."
+                    data-hi="हजारों राजपूत परिवारों से जुड़ें जो पहले से ही हमारे विश्वसनीय मंच के माध्यम से अपना आदर्श जोड़ा पा चुके हैं।">
+                    Join thousands of Rajput families who have already found their perfect match through our trusted
+                    platform.</p>
             </div>
             <div class="join-cta-actions">
                 <a href="profiles.html" class="btn-large btn-primary">
@@ -347,7 +461,9 @@
     <section class="values-strip" style="padding-top: 48px; padding-bottom: 56px;">
         <div class="values-container">
             <h2 class="values-title" data-en="Our Rajput Values" data-hi="हमारे राजपूत मूल्य">Our Rajput Values</h2>
-            <p class="values-subtitle" data-en="The timeless pillars that define our community" data-hi="वे शाश्वत स्तंभ जो हमारे समुदाय को परिभाषित करते हैं">The timeless pillars that define our community</p>
+            <p class="values-subtitle" data-en="The timeless pillars that define our community"
+                data-hi="वे शाश्वत स्तंभ जो हमारे समुदाय को परिभाषित करते हैं">The timeless pillars that define our
+                community</p>
             <div class="values-grid">
                 <div class="value-item">
                     <span class="value-emoji">⚔️</span>
@@ -382,28 +498,39 @@
                 <div class="logo-section">
                     <div class="logo-badge">K</div>
                     <div class="logo-text">
-                        <span class="logo-title" style="color: var(--color-gold);" data-en="Kshatriya Mewada" data-hi="क्षत्रिय मेवाड़ा">Kshatriya Mewada</span>
-                        <span class="logo-subtitle" style="color: var(--color-white);" data-en="Rajput Parivar" data-hi="राजपूत परिवार">Rajput Parivar</span>
+                        <span class="logo-title" style="color: var(--color-gold);" data-en="Kshatriya Mewada"
+                            data-hi="क्षत्रिय मेवाड़ा">Kshatriya Mewada</span>
+                        <span class="logo-subtitle" style="color: var(--color-white);" data-en="Rajput Parivar"
+                            data-hi="राजपूत परिवार">Rajput Parivar</span>
                     </div>
                 </div>
-                <p class="footer-brand-desc" data-en="A dedicated family matrimony portal preserving heritage and building relationships based on values, trust, and tradition." data-hi="मूल्यों, विश्वास और परंपरा पर आधारित रिश्तों का निर्माण करने और विरासत की रक्षा करने वाला एक समर्पित पारिवारिक विवाह पोर्टल।">A dedicated family matrimony portal preserving heritage and building relationships based on values, trust, and tradition.</p>
+                <p class="footer-brand-desc"
+                    data-en="A dedicated family matrimony portal preserving heritage and building relationships based on values, trust, and tradition."
+                    data-hi="मूल्यों, विश्वास और परंपरा पर आधारित रिश्तों का निर्माण करने और विरासत की रक्षा करने वाला एक समर्पित पारिवारिक विवाह पोर्टल।">
+                    A dedicated family matrimony portal preserving heritage and building relationships based on values,
+                    trust, and tradition.</p>
             </div>
 
             <div>
                 <h3 class="footer-heading" data-en="Quick Links" data-hi="त्वरित संपर्क">Quick Links</h3>
                 <ul class="footer-links">
                     <li><a href="index.html" class="footer-link" data-en="Home" data-hi="होम">Home</a></li>
-                    <li><a href="profiles.html" class="footer-link" data-en="Partner Search" data-hi="साथी खोज">Partner Search</a></li>
-                    <li id="footer-dashboard-item" style="display: none;"><a href="dashboard.html" class="footer-link" data-en="My Dashboard" data-hi="मेरा डैशबोर्ड">My Dashboard</a></li>
+                    <li><a href="profiles.html" class="footer-link" data-en="Partner Search" data-hi="साथी खोज">Partner
+                            Search</a></li>
+                    <li id="footer-dashboard-item" style="display: none;"><a href="dashboard.html" class="footer-link"
+                            data-en="My Dashboard" data-hi="मेरा डैशबोर्ड">My Dashboard</a></li>
                 </ul>
             </div>
 
             <div>
                 <h3 class="footer-heading" data-en="Support" data-hi="सहायता">Support</h3>
                 <ul class="footer-links">
-                    <li><a href="#" class="footer-link" data-en="Help Center" data-hi="सहायता केंद्र">Help Center</a></li>
-                    <li><a href="#" class="footer-link" data-en="Privacy Policy" data-hi="गोपनीयता नीति">Privacy Policy</a></li>
-                    <li><a href="#" class="footer-link" data-en="Terms of Service" data-hi="सेवा की शर्तें">Terms of Service</a></li>
+                    <li><a href="#" class="footer-link" data-en="Help Center" data-hi="सहायता केंद्र">Help Center</a>
+                    </li>
+                    <li><a href="#" class="footer-link" data-en="Privacy Policy" data-hi="गोपनीयता नीति">Privacy
+                            Policy</a></li>
+                    <li><a href="#" class="footer-link" data-en="Terms of Service" data-hi="सेवा की शर्तें">Terms of
+                            Service</a></li>
                 </ul>
             </div>
 
@@ -412,15 +539,16 @@
                 <div class="footer-contact-info">
                     <div class="footer-contact-item">
                         <i data-lucide="map-pin"></i>
-                        <span data-en="Mewar Heritage Center, Udaipur, Rajasthan" data-hi="मेवाड़ विरासत केंद्र, उदयपुर, राजस्थान">Mewar Heritage Center, Udaipur, Rajasthan</span>
+                        <span data-en="Mewar Heritage Center, Phanda, Madhya Pradesh"
+                            data-hi="मेवाड़ विरासत केंद्र, फंदा, मध्य प्रदेश"></span>
                     </div>
                     <div class="footer-contact-item">
                         <i data-lucide="phone"></i>
-                        <span>+91 294 242 8000</span>
+                        <span>+91 93024 04430</span>
                     </div>
                     <div class="footer-contact-item">
                         <i data-lucide="mail"></i>
-                        <span>support@mewadrajputparivar.org</span>
+                        <span>satya.chouhan@callybre.com</span>
                     </div>
                 </div>
             </div>
@@ -428,9 +556,11 @@
 
         <div class="footer-tagline-bar">
             <div class="rajput-border-thick" style="margin-bottom: 24px;"></div>
-            <div class="footer-tagline" data-en="Jai Mewar • Jai Kshatriya • Jai Rajputana" data-hi="जय मेवाड़ • जय क्षत्रिय • जय राजपूताना">Jai Mewar • Jai Kshatriya • Jai Rajputana</div>
+            <div class="footer-tagline" data-en="Jai Mewar • Jai Kshatriya • Jai Rajputana"
+                data-hi="जय मेवाड़ • जय क्षत्रिय • जय राजपूताना">Jai Mewar • Jai Kshatriya • Jai Rajputana</div>
             <div class="footer-copyright">
-                &copy; 2026 Kshatriya Mewada Rajput Parivar. <span data-en="All Rights Reserved." data-hi="सर्वाधिकार सुरक्षित।">All Rights Reserved.</span>
+                &copy; 2026 Kshatriya Mewada Rajput Parivar. <span data-en="All Rights Reserved."
+                    data-hi="सर्वाधिकार सुरक्षित।">All Rights Reserved.</span>
             </div>
         </div>
     </footer>
@@ -443,32 +573,42 @@
             <button class="modal-close-btn" onclick="closeAuthModal()">
                 <i data-lucide="x" style="width: 28px; height: 28px;"></i>
             </button>
-            
+
             <div class="modal-title-wrapper">
-                <span class="modal-title" id="modal-heading-title" data-en="Access Rajput Parivar" data-hi="राजपूत परिवार में प्रवेश">Access Rajput Parivar</span>
-                <p style="font-size: 14px; color: var(--color-text-muted); margin-top: 4px;" data-en="Verifying family credentials for secure matching" data-hi="सुरक्षित मिलान के लिए पारिवारिक क्रेडेंशियल का सत्यापन">Verifying family credentials for secure matching</p>
+                <span class="modal-title" id="modal-heading-title" data-en="Access Rajput Parivar"
+                    data-hi="राजपूत परिवार में प्रवेश">Access Rajput Parivar</span>
+                <p style="font-size: 14px; color: var(--color-text-muted); margin-top: 4px;"
+                    data-en="Verifying family credentials for secure matching"
+                    data-hi="सुरक्षित मिलान के लिए पारिवारिक क्रेडेंशियल का सत्यापन">Verifying family credentials for
+                    secure matching</p>
             </div>
 
             <!-- Tab Toggle Buttons -->
             <div class="modal-tabs">
-                <button class="modal-tab-btn active" id="tab-login" onclick="toggleModalTab('login')" data-en="Login" data-hi="लॉग इन">Login</button>
-                <button class="modal-tab-btn" id="tab-register" onclick="toggleModalTab('register')" data-en="Join Parivar" data-hi="परिवार से जुड़ें">Join Parivar</button>
+                <button class="modal-tab-btn active" id="tab-login" onclick="toggleModalTab('login')" data-en="Login"
+                    data-hi="लॉग इन">Login</button>
+                <button class="modal-tab-btn" id="tab-register" onclick="toggleModalTab('register')"
+                    data-en="Join Parivar" data-hi="परिवार से जुड़ें">Join Parivar</button>
             </div>
 
             <!-- Login Form Content -->
             <div class="modal-form-content" id="form-login-content">
                 <div class="form-group">
                     <label class="label-large" data-en="Mobile Number" data-hi="मोबाइल नंबर">Mobile Number</label>
-                    <input type="tel" class="input-large" id="login-phone" placeholder="Enter mobile number" data-placeholder-en="Enter mobile number" data-placeholder-hi="मोबाइल नंबर दर्ज करें" value="9876543210">
+                    <input type="tel" class="input-large" id="login-phone" placeholder="Enter mobile number"
+                        data-placeholder-en="Enter mobile number" data-placeholder-hi="मोबाइल नंबर दर्ज करें"
+                        value="9876543210">
                 </div>
                 <div class="form-group">
                     <label class="label-large" data-en="Password" data-hi="पासवर्ड">Password</label>
-                    <input type="password" class="input-large" id="login-password" placeholder="Enter password" data-placeholder-en="Enter password" data-placeholder-hi="पासवर्ड दर्ज करें" value="••••••••">
+                    <input type="password" class="input-large" id="login-password" placeholder="Enter password"
+                        data-placeholder-en="Enter password" data-placeholder-hi="पासवर्ड दर्ज करें" value="••••••••">
                 </div>
                 <div class="modal-form-footer">
                     <button class="btn-large btn-primary" onclick="submitMockLogin()" style="width: 100%;">
                         <i data-lucide="log-in"></i>
-                        <span data-en="Access My Dashboard" data-hi="मेरे डैशबोर्ड में प्रवेश करें">Access My Dashboard</span>
+                        <span data-en="Access My Dashboard" data-hi="मेरे डैशबोर्ड में प्रवेश करें">Access My
+                            Dashboard</span>
                     </button>
                 </div>
             </div>
@@ -476,21 +616,27 @@
             <!-- Register Form Content -->
             <div class="modal-form-content" id="form-register-content" style="display: none;">
                 <div class="form-group">
-                    <label class="label-large" data-en="Applicant's Full Name" data-hi="आवेदक का पूरा नाम">Applicant's Full Name</label>
-                    <input type="text" class="input-large" placeholder="E.g. Kunwar Pratap Chouhan" data-placeholder-en="E.g. Kunwar Pratap Chouhan" data-placeholder-hi="उदा. कुंवर प्रताप चौहान">
+                    <label class="label-large" data-en="Applicant's Full Name" data-hi="आवेदक का पूरा नाम">Applicant's
+                        Full Name</label>
+                    <input type="text" class="input-large" placeholder="E.g. Kunwar Pratap Chouhan"
+                        data-placeholder-en="E.g. Kunwar Pratap Chouhan" data-placeholder-hi="उदा. कुंवर प्रताप चौहान">
                 </div>
                 <div class="form-group">
-                    <label class="label-large" data-en="Gotra (Ancestry / Clan)" data-hi="गोत्र (वंश / कुल)">Gotra (Ancestry / Clan)</label>
-                    <input type="text" class="input-large" placeholder="E.g. Rathore" data-placeholder-en="E.g. Rathore" data-placeholder-hi="उदा. राठौड़">
+                    <label class="label-large" data-en="Gotra (Ancestry / Clan)" data-hi="गोत्र (वंश / कुल)">Gotra
+                        (Ancestry / Clan)</label>
+                    <input type="text" class="input-large" placeholder="E.g. Rathore" data-placeholder-en="E.g. Rathore"
+                        data-placeholder-hi="उदा. राठौड़">
                 </div>
                 <div class="form-group">
                     <label class="label-large" data-en="Mobile Number" data-hi="मोबाइल नंबर">Mobile Number</label>
-                    <input type="tel" class="input-large" placeholder="Enter 10 digit number" data-placeholder-en="Enter 10 digit number" data-placeholder-hi="10 अंकों का नंबर दर्ज करें">
+                    <input type="tel" class="input-large" placeholder="Enter 10 digit number"
+                        data-placeholder-en="Enter 10 digit number" data-placeholder-hi="10 अंकों का नंबर दर्ज करें">
                 </div>
                 <div class="modal-form-footer">
                     <button class="btn-large btn-primary" onclick="submitMockRegister()" style="width: 100%;">
                         <i data-lucide="user-plus"></i>
-                        <span data-en="Register Matrimonial Profile" data-hi="वैवाहिक प्रोफ़ाइल पंजीकृत करें">Register Matrimonial Profile</span>
+                        <span data-en="Register Matrimonial Profile" data-hi="वैवाहिक प्रोफ़ाइल पंजीकृत करें">Register
+                            Matrimonial Profile</span>
                     </button>
                 </div>
             </div>
@@ -500,4 +646,5 @@
     <!-- Linked Landing Logic JS -->
     <script src="js/index.js"></script>
 </body>
+
 </html>
