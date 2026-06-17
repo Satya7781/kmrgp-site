@@ -1787,6 +1787,56 @@ nav {
     z-index: 1;
 }
 
+.heritage-flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+    text-align: left;
+}
+
+.heritage-text-content {
+    flex: 1.2;
+}
+
+.heritage-image-wrapper {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.heritage-image {
+    max-width: 100%;
+    max-height: 400px;
+    height: auto;
+    border-radius: var(--border-radius-md);
+    border: 3px solid var(--color-gold);
+    box-shadow: var(--box-shadow-lg), 0 0 20px rgba(197, 165, 90, 0.3);
+    transition: var(--transition-smooth);
+}
+
+.heritage-image:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: var(--box-shadow-lg), 0 0 30px rgba(255, 111, 0, 0.4);
+    border-color: var(--color-saffron);
+}
+
+@media (max-width: 768px) {
+    .heritage-flex-container {
+        flex-direction: column-reverse;
+        gap: 32px;
+        text-align: center;
+    }
+    
+    .heritage-image-wrapper {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+}
+
 .values-title {
     color: var(--color-white);
     font-size: 34px;
