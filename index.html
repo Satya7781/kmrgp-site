@@ -550,11 +550,11 @@
                     </div>
                     <div class="footer-contact-item">
                         <i data-lucide="phone"></i>
-                        <span>+91 93024 04430</span>
+                        <span>+91 62672 82908</span>
                     </div>
                     <div class="footer-contact-item">
                         <i data-lucide="mail"></i>
-                        <span>satya.chouhan@callybre.com</span>
+                        <span>pramodrajput0214@gmail.com</span>
                     </div>
                 </div>
             </div>
@@ -631,7 +631,8 @@
                         <label class="label-large" data-en="Gender" data-hi="लिंग">Gender</label>
                         <select class="input-large" id="register-gender">
                             <option value="Groom" data-en="Groom (Male)" data-hi="वर (पुरुष)">Groom (Male)</option>
-                            <option value="Bride" data-en="Bride (Female)" data-hi="वधू (स्त्री)">Bride (Female)</option>
+                            <option value="Bride" data-en="Bride (Female)" data-hi="वधू (स्त्री)">Bride (Female)
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -643,7 +644,8 @@
                             data-placeholder-en="E.g. Rathore" data-placeholder-hi="उदा. राठौड़">
                     </div>
                     <div class="form-group">
-                        <label class="label-large" data-en="Gotra (Mother)" data-hi="गोत्र (माता)">Gotra (Mother)</label>
+                        <label class="label-large" data-en="Gotra (Mother)" data-hi="गोत्र (माता)">Gotra
+                            (Mother)</label>
                         <input type="text" class="input-large" id="register-gotra-mother" placeholder="E.g. Chouhan"
                             data-placeholder-en="E.g. Chouhan" data-placeholder-hi="उदा. चौहान">
                     </div>
@@ -682,7 +684,8 @@
                     <div class="form-group">
                         <label class="label-large" data-en="Mobile Number" data-hi="मोबाइल नंबर">Mobile Number</label>
                         <input type="tel" class="input-large" id="register-phone" placeholder="Enter 10 digit number"
-                            data-placeholder-en="Enter 10 digit number" data-placeholder-hi="10 अंकों का नंबर दर्ज करें">
+                            data-placeholder-en="Enter 10 digit number"
+                            data-placeholder-hi="10 अंकों का नंबर दर्ज करें">
                     </div>
                     <div class="form-group">
                         <label class="label-large" data-en="Set Password" data-hi="पासवर्ड बनाएं">Set Password</label>
@@ -693,13 +696,19 @@
 
                 <div class="form-group">
                     <label class="label-large" data-en="Profile Photo" data-hi="प्रोफ़ाइल फोटो">Profile Photo</label>
-                    <div class="photo-upload-zone" id="register-photo-zone" style="border: 2px dashed var(--color-gold); border-radius: var(--border-radius-md); padding: 16px; text-align: center; cursor: pointer; transition: var(--transition-smooth); display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 72px;">
-                        <input type="file" id="register-photo" accept="image/*" style="display: none;" onchange="handleRegisterPhotoSelect(event)">
-                        <div class="upload-zone-content" onclick="document.getElementById('register-photo').click()" style="display: flex; align-items: center; gap: 8px;">
+                    <div class="photo-upload-zone" id="register-photo-zone"
+                        style="border: 2px dashed var(--color-gold); border-radius: var(--border-radius-md); padding: 16px; text-align: center; cursor: pointer; transition: var(--transition-smooth); display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 72px;">
+                        <input type="file" id="register-photo" accept="image/*" style="display: none;"
+                            onchange="handleRegisterPhotoSelect(event)">
+                        <div class="upload-zone-content" onclick="document.getElementById('register-photo').click()"
+                            style="display: flex; align-items: center; gap: 8px;">
                             <i data-lucide="camera" style="width: 22px; height: 22px; color: var(--color-gold);"></i>
-                            <span style="font-size: 14px; font-weight: 600; color: var(--color-text-muted);" data-en="Choose or Drag Photo" data-hi="फ़ोटो चुनें या यहाँ खींचें">Choose or Drag Photo</span>
+                            <span style="font-size: 14px; font-weight: 600; color: var(--color-text-muted);"
+                                data-en="Choose or Drag Photo" data-hi="फ़ोटो चुनें या यहाँ खींचें">Choose or Drag
+                                Photo</span>
                         </div>
-                        <img id="register-photo-preview" style="display: none; width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-gold); margin-left: auto;">
+                        <img id="register-photo-preview"
+                            style="display: none; width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-gold); margin-left: auto;">
                     </div>
                 </div>
 

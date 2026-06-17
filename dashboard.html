@@ -76,11 +76,13 @@
                 <!-- Authenticated User Profile Summary -->
                 <div class="user-profile-summary"
                     style="display: flex; align-items: center; gap: 10px; border-left: 1px solid var(--color-gold); padding-left: 16px;">
-                    <img src="https://picsum.photos/seed/arjun-singh/100/100.jpg" alt="User Avatar" class="user-chip-avatar"
+                    <img src="https://picsum.photos/seed/arjun-singh/100/100.jpg" alt="User Avatar"
+                        class="user-chip-avatar"
                         style="width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--color-gold); object-fit: cover;">
                     <div style="display: flex; flex-direction: column; text-align: left;">
-                        <span style="font-size: 14px; font-weight: 700; color: var(--color-maroon);" class="user-chip-name"
-                            data-en="Kunwar Arjun Mewada" data-hi="कुंवर अर्जुन मेवाड़ा">Kunwar Arjun Mewada</span>
+                        <span style="font-size: 14px; font-weight: 700; color: var(--color-maroon);"
+                            class="user-chip-name" data-en="Kunwar Arjun Mewada" data-hi="कुंवर अर्जुन मेवाड़ा">Kunwar
+                            Arjun Mewada</span>
                         <span
                             style="font-size: 11px; font-weight: 600; color: var(--color-saffron); text-transform: uppercase;"
                             data-en="Profile: 85% Done" data-hi="प्रोफ़ाइल: 85% पूर्ण">Profile: 85% Done</span>
@@ -206,12 +208,20 @@
 
                     <!-- Inputs -->
                     <div>
-                        <label class="label-large" data-en="Profile Photo" data-hi="प्रोफ़ाइल फोटो">Profile Photo</label>
-                        <div class="photo-upload-zone" id="dashboard-photo-zone" style="border: 2px dashed var(--color-gold); border-radius: var(--border-radius-md); padding: 16px; text-align: center; cursor: pointer; transition: var(--transition-smooth); display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 72px; margin-bottom: 8px;">
-                            <input type="file" id="dashboard-photo" accept="image/*" style="display: none;" onchange="handleDashboardPhotoSelect(event)">
-                            <div class="upload-zone-content" onclick="document.getElementById('dashboard-photo').click()" style="display: flex; align-items: center; gap: 8px;">
-                                <i data-lucide="camera" style="width: 22px; height: 22px; color: var(--color-gold);"></i>
-                                <span style="font-size: 14px; font-weight: 600; color: var(--color-text-muted);" data-en="Change Profile Photo" data-hi="प्रोफ़ाइल फोटो बदलें">Change Profile Photo</span>
+                        <label class="label-large" data-en="Profile Photo" data-hi="प्रोफ़ाइल फोटो">Profile
+                            Photo</label>
+                        <div class="photo-upload-zone" id="dashboard-photo-zone"
+                            style="border: 2px dashed var(--color-gold); border-radius: var(--border-radius-md); padding: 16px; text-align: center; cursor: pointer; transition: var(--transition-smooth); display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 72px; margin-bottom: 8px;">
+                            <input type="file" id="dashboard-photo" accept="image/*" style="display: none;"
+                                onchange="handleDashboardPhotoSelect(event)">
+                            <div class="upload-zone-content"
+                                onclick="document.getElementById('dashboard-photo').click()"
+                                style="display: flex; align-items: center; gap: 8px;">
+                                <i data-lucide="camera"
+                                    style="width: 22px; height: 22px; color: var(--color-gold);"></i>
+                                <span style="font-size: 14px; font-weight: 600; color: var(--color-text-muted);"
+                                    data-en="Change Profile Photo" data-hi="प्रोफ़ाइल फोटो बदलें">Change Profile
+                                    Photo</span>
                             </div>
                         </div>
                     </div>
@@ -243,8 +253,10 @@
                         <div>
                             <label class="label-large" data-en="Gender" data-hi="लिंग">Gender</label>
                             <select class="input-large" id="bio-gender" onchange="updateBioDataPreview()">
-                                <option value="Groom" selected data-en="Groom (Male)" data-hi="वर (पुरुष)">Groom (Male)</option>
-                                <option value="Bride" data-en="Bride (Female)" data-hi="वधू (स्त्री)">Bride (Female)</option>
+                                <option value="Groom" selected data-en="Groom (Male)" data-hi="वर (पुरुष)">Groom (Male)
+                                </option>
+                                <option value="Bride" data-en="Bride (Female)" data-hi="वधू (स्त्री)">Bride (Female)
+                                </option>
                             </select>
                         </div>
                         <div>
@@ -301,13 +313,15 @@
 
                     <!-- Partner Preferences Section -->
                     <div style="border-top: 2px solid var(--color-gold-light); margin-top: 20px; padding-top: 16px;">
-                        <h4 style="color: var(--color-maroon); font-size: 18px; margin-bottom: 12px;" data-en="Partner Preferences"
-                            data-hi="जीवनसाथी की प्राथमिकताएं">Partner Preferences</h4>
+                        <h4 style="color: var(--color-maroon); font-size: 18px; margin-bottom: 12px;"
+                            data-en="Partner Preferences" data-hi="जीवनसाथी की प्राथमिकताएं">Partner Preferences</h4>
                     </div>
-                    
-                    <div class="pref-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+
+                    <div class="pref-grid"
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
                         <div>
-                            <label class="label-large" data-en="Age Preference" data-hi="आयु सीमा">Age Preference</label>
+                            <label class="label-large" data-en="Age Preference" data-hi="आयु सीमा">Age
+                                Preference</label>
                             <select class="input-large" id="pref-age">
                                 <option value="18-25">18 - 25 Yrs</option>
                                 <option value="21-28" selected>21 - 28 Yrs</option>
@@ -325,14 +339,18 @@
                             </select>
                         </div>
                     </div>
-                    
-                    <div class="pref-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+
+                    <div class="pref-grid"
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
                         <div>
-                            <label class="label-large" data-en="Gotra Exclusion" data-hi="गोत्र निषेध">Gotra Exclusion</label>
-                            <input type="text" class="input-large" id="pref-gotra-exclude" value="Mewada" placeholder="E.g. Mewada">
+                            <label class="label-large" data-en="Gotra Exclusion" data-hi="गोत्र निषेध">Gotra
+                                Exclusion</label>
+                            <input type="text" class="input-large" id="pref-gotra-exclude" value="Mewada"
+                                placeholder="E.g. Mewada">
                         </div>
                         <div>
-                            <label class="label-large" data-en="Preferred District" data-hi="पसंदीदा जिला">Preferred District</label>
+                            <label class="label-large" data-en="Preferred District" data-hi="पसंदीदा जिला">Preferred
+                                District</label>
                             <select class="input-large" id="pref-district">
                                 <option value="All">All Districts</option>
                                 <option value="Bhopal" selected>Bhopal</option>
@@ -428,10 +446,13 @@
     <!-- ============================================ -->
     <!-- RECEIVED INTERESTS -->
     <!-- ============================================ -->
-    <section class="matches-section" id="interests-section" style="max-width: 1200px; margin: 40px auto 48px auto; padding: 0 24px;">
-        <div style="border-bottom: 2px solid var(--color-gold); padding-bottom: 12px; margin-bottom: 24px; display: flex; align-items: center; gap: 12px;">
+    <section class="matches-section" id="interests-section"
+        style="max-width: 1200px; margin: 40px auto 48px auto; padding: 0 24px;">
+        <div
+            style="border-bottom: 2px solid var(--color-gold); padding-bottom: 12px; margin-bottom: 24px; display: flex; align-items: center; gap: 12px;">
             <i data-lucide="heart" style="width: 28px; height: 28px; color: var(--color-maroon);"></i>
-            <h2 style="color: var(--color-maroon); margin: 0; font-family: 'Playfair Display', serif;" data-en="Received Interests" data-hi="प्राप्त रुचियाँ">Received Interests</h2>
+            <h2 style="color: var(--color-maroon); margin: 0; font-family: 'Playfair Display', serif;"
+                data-en="Received Interests" data-hi="प्राप्त रुचियाँ">Received Interests</h2>
         </div>
         <div id="interests-container-list">
             <!-- Dynamically populated from JS -->
@@ -527,14 +548,15 @@
                     </div>
                     <div class="footer-contact-item">
                         <i data-lucide="phone"></i>
-                        <span>+91 93024 04430</span>
+                        <span>+91 62672 82908</span>
                     </div>
                     <div class="footer-contact-item">
                         <i data-lucide="mail"></i>
-                        <span>satya.chouhan@callybre.com</span>
+                        <span>pramodrajput0214@gmail.com</span>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
 
         <div class="footer-tagline-bar">
