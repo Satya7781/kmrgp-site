@@ -1,0 +1,41 @@
+# Environment variables – NEVER commit the real .env
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Database
+*.db
+*.sqlite3
+
+# Uploads (keep directory tracked via .gitkeep)
+app/uploads/*
+!app/uploads/.gitkeep
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Backups
+*.sql
+backups/
+
+# Docker
+*.override.yml
