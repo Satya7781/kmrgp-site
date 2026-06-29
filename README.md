@@ -1,55 +1,95 @@
 # Kshatriya Mewada Rajput Parivar — Matrimonial Portal
 
-A bilingual (English / हिंदी) matrimonial web portal for the **Kshatriya Mewada Rajput Parivar** community, built with vanilla HTML, CSS, and JavaScript.
-
-## Features
-
-- 🔍 **Advanced Profile Search** — Filter by gender, age, gotra, gotra exclusion, height, district, community, profession keyword, and verified status
-- 🔒 **Privacy-First Access Control** — Gotra, family details, and contact numbers are hidden from guests; login unlocks full profile with click-to-call
-- 👨‍👩‍👧‍👦 **Expanded Family Details** (Member-Only) — Father, Mother, Parents' Occupation, Family Type, Brothers, Sisters, DOB, Address, Contact
-- 🌐 **Bilingual Interface** — Full English / Hindi switcher with live re-rendering
-- 📇 **Bio-Data Generator** — Premium printable PDF bio-data builder (Dashboard)
-- 📱 **Responsive Design** — Mobile-first layout with drawer navigation
+A bilingual (English / हिंदी) matrimonial web portal for the **Kshatriya Mewada Rajput Parivar** community, now rebuilt with a modern full-stack architecture.
 
 ## Tech Stack
 
-- **HTML5** — Semantic structure
-- **Vanilla CSS** — Custom design system (glassmorphism, CSS variables, animations)
-- **Vanilla JavaScript** — No frameworks, no build tools
-- **Lucide Icons** — CDN-loaded icon set
+- **Bun** — JavaScript runtime and package manager
+- **Next.js 15** — React framework with App Router
+- **TypeScript + TSX** — Type-safe components
+- **Tailwind CSS + shadcn/ui** — Custom design system
+- **Drizzle ORM** — Type-safe PostgreSQL access
+- **PostgreSQL** — Relational database
+- **jose + bcryptjs** — JWT session auth and password hashing
+- **lru-cache** — In-memory service-layer caching
+
+## Architecture Rules
+
+- **ORMs are never touched directly.** All database access flows through typed services in `src/lib/services/*`.
+- **LRU cache** wraps hot reads (approved profiles, user sessions, stats) for performance.
+- **Server Actions** bridge the client components to the service layer.
+- **Role-based access** for USER, ADMIN, and SUPER_ADMIN.
 
 ## Running Locally
 
+### 1. Start PostgreSQL
+
 ```bash
-python -m http.server 8000
+bun run docker:up
 ```
 
-Then open [http://localhost:8000](http://localhost:8000)
+### 2. Install dependencies
+
+```bash
+bun install
+```
+
+### 3. Push schema and seed data
+
+```bash
+bun run db:push
+bun run db:seed
+```
+
+### 4. Run dev server
+
+```bash
+bun run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000)
+
+## Default Login
+
+- **Super Admin:** `6267282908` / `password123`
+- **Sample Groom:** any seeded phone (see seed file) / `password123`
+
+## Scripts
+
+| Script | Description |
+|--------|-------------|
+| `bun run dev` | Start Next.js dev server |
+| `bun run build` | Production build |
+| `bun run db:push` | Push Drizzle schema to PostgreSQL |
+| `bun run db:seed` | Seed 11 official groom profiles + super admin |
+| `bun run db:reset` | Reset database and re-seed |
+| `bun run db:studio` | Open Drizzle Studio |
+| `bun run docker:up` | Start PostgreSQL container |
 
 ## Pages
 
 | Page | Description |
 |------|-------------|
-| `index.html` | Homepage with hero, featured profiles, community info |
-| `profiles.html` | Full search portal with 11 official groom profiles |
-| `dashboard.html` | Member dashboard with bio-data generator |
+| `/` | Public homepage with hero, featured profiles, legacy info |
+| `/profiles` | Searchable, filterable matchmaking grid (auth required) |
+| `/dashboard` | User dashboard + bio-data generator + admin/super-admin panels |
 
-## Current Grooms Dataset (11 Profiles)
+## Project Structure
 
-| # | Name | Community | Gotra | District |
-|---|------|-----------|-------|----------|
-| 1 | Sandeep Mewada | Mewada | Dod | Bhopal |
-| 2 | Sarvesh Rajput | Rajput | Dod | Bhopal |
-| 3 | Hirdesh Mewada | Mewada | Hada | Sehore |
-| 4 | Vikash Mewada | Mewada | Baghela | Bhopal |
-| 5 | Arpit Rajput | Rajput | Dod | Bhopal |
-| 6 | Rajkumar Mewada | Mewada | Pipada | Sehore |
-| 7 | Ankit Mewada | Mewada | Dava | Sehore |
-| 8 | Animesh Mewada | Mewada | Sisodiya | Bhopal |
-| 9 | Rohit Mewada | Mewada | Pathariya | Bhopal |
-| 10 | Deepak Mewada | Mewada | Budhana | Bhopal |
-| 11 | Hritik Mewada | Mewada | Bhati | Bhopal |
+```
+src/
+  app/           # Next.js App Router pages and API routes
+  components/    # React components (ui, layout, feature)
+  lib/
+    db/          # Drizzle schema + client
+    services/    # Business logic / ORM abstraction layer
+    actions/     # Next.js Server Actions
+    auth/        # Password + JWT session utilities
+    cache/       # LRU cache wrapper
+  types/         # Shared TypeScript types
+  scripts/       # Seed / reset scripts
+```
 
 ## License
 
-© 2025 Kshatriya Mewada Rajput Parivar. All rights reserved.
+© 2026 Kshatriya Mewada Rajput Parivar. All rights reserved.

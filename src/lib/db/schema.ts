@@ -1,0 +1,133 @@
+import {
+  pgTable,
+  serial,
+  varchar,
+  text,
+  boolean,
+  timestamp,
+  integer,
+  index,
+  uniqueIndex,
+  pgEnum,
+} from "drizzle-orm/pg-core"
+
+export const roleEnum = pgEnum("role", ["USER", "ADMIN", "SUPER_ADMIN"])
+export const profileTypeEnum = pgEnum("profile_type", ["GROOM", "BRIDE"])
+export const approvalStatusEnum = pgEnum("approval_status", [
+  "SENT",
+  "PENDING",
+  "APPROVED",
+  "REJECTED",
+])
+export const actionTypeEnum = pgEnum("action_type", ["APPROVE", "REJECT", "DELETE"])
+export const interestStatusEnum = pgEnum("interest_status", ["PENDING", "ACCEPTED", "DECLINED"])
+
+export const users = pgTable(
+  "users",
+  {
+    id: serial("id").primaryKey(),
+    phone: varchar("phone", { length: 20 }).notNull().unique(),
+    username: varchar("username", { length: 80 }).unique(),
+    passwordHash: varchar("password_hash", { length: 255 }).notNull(),
+    email: varchar("email", { length: 255 }).unique(),
+    role: roleEnum("role").notNull().default("USER"),
+    isApproved: boolean("is_approved").notNull().default(false),
+    emailVerified: boolean("email_verified").notNull().default(true),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => ({
+    phoneIdx: index("users_phone_idx").on(table.phone),
+    usernameIdx: index("users_username_idx").on(table.username),
+    approvedIdx: index("users_is_approved_idx").on(table.isApproved),
+  })
+)
+
+export const profiles = pgTable(
+  "profiles",
+  {
+    id: serial("id").primaryKey(),
+    userId: integer("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" })
+      .unique(),
+    type: profileTypeEnum("type").notNull(),
+    bio: text("bio").default(""),
+    visible: boolean("visible").notNull().default(false),
+    approvalStatus: approvalStatusEnum("approval_status").notNull().default("SENT"),
+    imagePath: varchar("image_path", { length: 500 }),
+
+    dob: varchar("dob", { length: 50 }),
+    height: varchar("height", { length: 20 }),
+    gotraSelf: varchar("gotra_self", { length: 80 }),
+    gotraMother: varchar("gotra_mother", { length: 80 }),
+    education: varchar("education", { length: 255 }),
+    profession: varchar("profession", { length: 255 }),
+    district: varchar("district", { length: 80 }),
+    community: varchar("community", { length: 80 }).notNull().default("Mewada"),
+
+    fatherName: varchar("father_name", { length: 100 }),
+    motherName: varchar("mother_name", { length: 100 }),
+    address: varchar("address", { length: 255 }),
+    contact: varchar("contact", { length: 20 }),
+    brothers: varchar("brothers", { length: 50 }),
+    sisters: varchar("sisters", { length: 50 }),
+    familyType: varchar("family_type", { length: 80 }),
+    parentsOccupation: varchar("parents_occupation", { length: 255 }),
+
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .notNull()
+      .defaultNow()
+      .$onUpdate(() => new Date()),
+  },
+  (table) => ({
+    userIdIdx: index("profiles_user_id_idx").on(table.userId),
+    visibleIdx: index("profiles_visible_idx").on(table.visible),
+    statusIdx: index("profiles_status_idx").on(table.approvalStatus),
+  })
+)
+
+export const adminActionLogs = pgTable(
+  "admin_action_logs",
+  {
+    id: serial("id").primaryKey(),
+    adminId: integer("admin_id").references(() => users.id, { onDelete: "set null" }),
+    actionType: actionTypeEnum("action_type").notNull(),
+    targetUserId: integer("target_user_id").references(() => users.id, { onDelete: "set null" }),
+    timestamp: timestamp("timestamp", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => ({
+    adminIdIdx: index("logs_admin_id_idx").on(table.adminId),
+    targetUserIdIdx: index("logs_target_user_id_idx").on(table.targetUserId),
+    timestampIdx: index("logs_timestamp_idx").on(table.timestamp),
+  })
+)
+
+export const interests = pgTable(
+  "interests",
+  {
+    id: serial("id").primaryKey(),
+    senderId: integer("sender_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    receiverId: integer("receiver_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    status: interestStatusEnum("status").notNull().default("PENDING"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => ({
+    receiverIdx: index("interests_receiver_idx").on(table.receiverId),
+    senderIdx: index("interests_sender_idx").on(table.senderId),
+    uniquePair: uniqueIndex("interests_sender_receiver_idx").on(table.senderId, table.receiverId),
+  })
+)
+
+export type User = typeof users.$inferSelect
+export type NewUser = typeof users.$inferInsert
+export type Profile = typeof profiles.$inferSelect
+export type NewProfile = typeof profiles.$inferInsert
+export type AdminActionLog = typeof adminActionLogs.$inferSelect
+export type NewAdminActionLog = typeof adminActionLogs.$inferInsert
+export type Interest = typeof interests.$inferSelect
+export type NewInterest = typeof interests.$inferInsert

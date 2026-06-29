@@ -1,7 +1,23 @@
-# Environment variables – NEVER commit the real .env
+# Environment variables – NEVER commit real env files
 .env
+.env.local
+.env.*.local
 
-# Python
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Bun
+bun.lockb
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Python (legacy)
 __pycache__/
 *.py[cod]
 *.pyo
@@ -15,9 +31,9 @@ build/
 *.db
 *.sqlite3
 
-# Uploads (keep directory tracked via .gitkeep)
-app/uploads/*
-!app/uploads/.gitkeep
+# Uploads
+public/uploads/*
+!public/uploads/.gitkeep
 
 # IDE / editor
 .vscode/
@@ -39,3 +55,4 @@ backups/
 
 # Docker
 *.override.yml
+NEVERTOUCH

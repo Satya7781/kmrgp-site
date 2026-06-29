@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap');
+
+@layer base {
+  :root {
+    --background: 40 33% 98%;
+    --foreground: 20 30% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 30% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 30% 14%;
+    --primary: 24 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 348 100% 25%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 40 30% 94%;
+    --muted-foreground: 20 12% 38%;
+    --accent: 42 45% 56%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 42 30% 80%;
+    --input: 42 30% 80%;
+    --ring: 24 100% 50%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-cream text-foreground antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-maroon;
+  }
+  .lang-hi *, [lang="hi"] {
+    @apply font-hindi;
+  }
+}
+
+@layer components {
+  .rajput-border {
+    background-image: repeating-linear-gradient(
+      90deg,
+      #FF6F00 0px,
+      #FF6F00 12px,
+      transparent 12px,
+      transparent 20px,
+      #800020 20px,
+      #800020 32px,
+      transparent 32px,
+      transparent 40px,
+      #C5A55A 40px,
+      #C5A55A 52px,
+      transparent 52px,
+      transparent 60px
+    );
+    height: 6px;
+    width: 100%;
+  }
+}
+
+@layer components {
+  .input-style {
+    @apply flex min-h-[52px] w-full rounded-2xl border-2 border-gold-hover bg-white px-4 py-3 text-base transition-colors focus:border-saffron focus:outline-none focus:ring-4 focus:ring-saffron-light;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
