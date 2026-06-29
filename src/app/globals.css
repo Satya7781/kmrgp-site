@@ -33,6 +33,11 @@
   * {
     @apply border-border;
   }
+  html {
+    /* Reserve a stable scrollbar gutter so content never shifts horizontally
+       when navigating between short (no scrollbar) and long (scrollable) pages. */
+    scrollbar-gutter: stable;
+  }
   body {
     @apply bg-cream text-foreground antialiased;
   }
