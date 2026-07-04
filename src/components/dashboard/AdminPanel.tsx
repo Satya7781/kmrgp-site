@@ -93,7 +93,7 @@ export function AdminPanel() {
       toast.error(res.error)
       return
     }
-    toast.success(t("admin.approved"))
+    toast.success(t("admin.approvedToast"))
     load()
   }
 
@@ -149,9 +149,9 @@ export function AdminPanel() {
     )
   }, [query])
 
-  const filteredMembers = useMemo(() => allMembers.filter(matchesSearch), [allMembers, query])
-  const filteredPending = useMemo(() => pendingProfiles.filter(matchesSearch), [pendingProfiles, query])
-  const filteredRejected = useMemo(() => rejectedProfiles.filter(matchesSearch), [rejectedProfiles, query])
+  const filteredMembers = useMemo(() => allMembers.filter(matchesSearch), [allMembers, matchesSearch])
+  const filteredPending = useMemo(() => pendingProfiles.filter(matchesSearch), [pendingProfiles, matchesSearch])
+  const filteredRejected = useMemo(() => rejectedProfiles.filter(matchesSearch), [rejectedProfiles, matchesSearch])
 
   if (loading) {
     return (
