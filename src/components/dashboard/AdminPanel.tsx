@@ -93,7 +93,7 @@ export function AdminPanel() {
       toast.error(res.error)
       return
     }
-    toast.success(t("admin.approved"))
+    toast.success(t("admin.approvedToast"))
     load()
   }
 
@@ -103,7 +103,7 @@ export function AdminPanel() {
       toast.error(res.error)
       return
     }
-    toast.info(t("admin.rejected"))
+    toast.info(t("admin.rejectedToast"))
     load()
   }
 
