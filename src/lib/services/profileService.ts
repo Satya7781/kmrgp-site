@@ -2,10 +2,11 @@ import { eq, and, ilike, or, desc, asc, sql, type SQL } from "drizzle-orm"
 import { db } from "@/lib/db"
 import { profiles, users, type Profile, type User } from "@/lib/db/schema"
 import { cacheDelete, cacheDeletePattern, cacheGet, cacheSet } from "@/lib/cache"
-import type { ApprovalStatus, ProfileType, PublicProfile } from "@/types"
+import type { ApprovalStatus, ProfileType, PublicProfile, PublicDisplayStats } from "@/types"
 
 const PROFILE_KEY = (userId: number) => `profile:${userId}`
 const APPROVED_PROFILES_KEY = "profiles:approved"
+const FEATURED_PROFILES_KEY = "profiles:featured"
 const PENDING_PROFILES_KEY = "profiles:pending"
 const REJECTED_PROFILES_KEY = "profiles:rejected"
 const ALL_PROFILES_KEY = "profiles:all"
@@ -18,6 +19,8 @@ export function toPublicProfile(user: User | null, profile: Profile): PublicProf
     type: profile.type as ProfileType,
     bio: profile.bio,
     visible: profile.visible,
+    isSeed: profile.isSeed,
+    featured: profile.featured,
     approvalStatus: profile.approvalStatus as ApprovalStatus,
     // Full URLs (R2 CDN) are used as-is; bare filenames fall back to the
     // local image API route (used by seed data and legacy local uploads).
@@ -252,17 +255,13 @@ export async function getProfileByUserId(userId: number): Promise<(PublicProfile
 
 export async function createProfile(userId: number, data: Partial<Profile>): Promise<Profile> {
   const [profile] = await db.insert(profiles).values({ userId, ...data } as Profile).returning()
-  cacheDelete(PROFILE_KEY(userId))
-  cacheDelete(APPROVED_PROFILES_KEY)
-  cacheDelete(PENDING_PROFILES_KEY)
+  invalidateProfileListCaches(userId)
   return profile
 }
 
 export async function updateProfile(userId: number, data: Partial<Profile>): Promise<Profile> {
   const [profile] = await db.update(profiles).set(data).where(eq(profiles.userId, userId)).returning()
-  cacheDelete(PROFILE_KEY(userId))
-  cacheDelete(APPROVED_PROFILES_KEY)
-  cacheDelete(PENDING_PROFILES_KEY)
+  invalidateProfileListCaches(userId)
   return profile
 }
 
@@ -273,18 +272,81 @@ export async function updateProfileImage(userId: number, imagePath: string): Pro
 export async function updateApprovalStatus(
   userId: number,
   status: ApprovalStatus,
-  visible: boolean
+  visible: boolean,
+  featured?: boolean
+): Promise<Profile> {
+  const patch: Partial<typeof profiles.$inferInsert> = { approvalStatus: status, visible }
+  if (featured !== undefined) patch.featured = featured
+
+  const [profile] = await db
+    .update(profiles)
+    .set(patch)
+    .where(eq(profiles.userId, userId))
+    .returning()
+  invalidateProfileListCaches(userId)
+  return profile
+}
+
+function invalidateProfileListCaches(userId?: number) {
+  if (userId) cacheDelete(PROFILE_KEY(userId))
+  cacheDelete(APPROVED_PROFILES_KEY)
+  cacheDelete(FEATURED_PROFILES_KEY)
+  cacheDelete(PENDING_PROFILES_KEY)
+  cacheDelete(REJECTED_PROFILES_KEY)
+  cacheDelete(ALL_PROFILES_KEY)
+  cacheDeletePattern("stats:")
+}
+
+export async function updateProfilePublicDisplay(
+  userId: number,
+  patch: { visible?: boolean; featured?: boolean }
 ): Promise<Profile> {
   const [profile] = await db
     .update(profiles)
-    .set({ approvalStatus: status, visible })
+    .set(patch)
     .where(eq(profiles.userId, userId))
     .returning()
-  cacheDelete(PROFILE_KEY(userId))
-  cacheDelete(APPROVED_PROFILES_KEY)
-  cacheDelete(PENDING_PROFILES_KEY)
-  cacheDeletePattern("stats:")
+  invalidateProfileListCaches(userId)
   return profile
+}
+
+export async function hideAllSeedProfiles(): Promise<number> {
+  const rows = await db
+    .update(profiles)
+    .set({ visible: false, featured: false })
+    .where(eq(profiles.isSeed, true))
+    .returning({ id: profiles.id })
+  invalidateProfileListCaches()
+  return rows.length
+}
+
+export async function getPublicDisplayStats(): Promise<PublicDisplayStats> {
+  const rows = await db
+    .select({
+      visible: profiles.visible,
+      isSeed: profiles.isSeed,
+      featured: profiles.featured,
+    })
+    .from(profiles)
+    .leftJoin(users, eq(profiles.userId, users.id))
+    .where(and(eq(profiles.approvalStatus, "APPROVED"), eq(users.role, "USER")))
+
+  let publicTotal = 0
+  let publicSeed = 0
+  let publicReal = 0
+  let featuredCount = 0
+  let approvedReal = 0
+
+  for (const row of rows) {
+    if (!row.isSeed) approvedReal++
+    if (row.featured && row.visible) featuredCount++
+    if (!row.visible) continue
+    publicTotal++
+    if (row.isSeed) publicSeed++
+    else publicReal++
+  }
+
+  return { publicTotal, publicSeed, publicReal, featuredCount, approvedReal }
 }
 
 export async function listApprovedProfiles(): Promise<PublicProfile[]> {
@@ -308,6 +370,54 @@ export async function listApprovedProfiles(): Promise<PublicProfile[]> {
     age: estimateAge(profile.dob),
   }))
   cacheSet(APPROVED_PROFILES_KEY, result, 1000 * 60 * 2)
+  return result
+}
+
+/** Home-page featured section — admin-picked first, then real profiles, then seed. */
+export async function listFeaturedProfiles(limit = 3): Promise<PublicProfile[]> {
+  const cached = cacheGet<PublicProfile[]>(FEATURED_PROFILES_KEY)
+  if (cached) return cached.slice(0, limit)
+
+  const baseWhere = and(
+    eq(profiles.visible, true),
+    eq(profiles.approvalStatus, "APPROVED"),
+    eq(users.role, "USER")
+  )
+
+  const featuredRows = await db
+    .select()
+    .from(profiles)
+    .leftJoin(users, eq(profiles.userId, users.id))
+    .where(and(baseWhere, eq(profiles.featured, true)))
+    .orderBy(desc(profiles.updatedAt))
+
+  const picked = featuredRows.map(({ users: userRow, profiles: profile }) => ({
+    ...toPublicProfile(userRow, profile),
+    age: estimateAge(profile.dob),
+  }))
+
+  if (picked.length >= limit) {
+    cacheSet(FEATURED_PROFILES_KEY, picked, 1000 * 60 * 2)
+    return picked.slice(0, limit)
+  }
+
+  const fillerRows = await db
+    .select()
+    .from(profiles)
+    .leftJoin(users, eq(profiles.userId, users.id))
+    .where(and(baseWhere, eq(profiles.featured, false)))
+    .orderBy(asc(profiles.isSeed), desc(profiles.updatedAt))
+
+  const seen = new Set(picked.map((p) => p.userId))
+  const filler = fillerRows
+    .map(({ users: userRow, profiles: profile }) => ({
+      ...toPublicProfile(userRow, profile),
+      age: estimateAge(profile.dob),
+    }))
+    .filter((p) => !seen.has(p.userId))
+
+  const result = [...picked, ...filler].slice(0, limit)
+  cacheSet(FEATURED_PROFILES_KEY, result, 1000 * 60 * 2)
   return result
 }
 

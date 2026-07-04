@@ -13,6 +13,8 @@ export interface PublicProfile {
   type: ProfileType
   bio: string | null
   visible: boolean
+  isSeed: boolean
+  featured: boolean
   approvalStatus: ApprovalStatus
   imageUrl: string | null
   dob: string | null
@@ -32,6 +34,14 @@ export interface PublicProfile {
   familyType: string | null
   parentsOccupation: string | null
   age?: number
+}
+
+export interface PublicDisplayStats {
+  publicTotal: number
+  publicSeed: number
+  publicReal: number
+  featuredCount: number
+  approvedReal: number
 }
 
 export interface AuthResult {

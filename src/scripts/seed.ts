@@ -1,8 +1,10 @@
 import { db } from "@/lib/db"
 import { users, profiles } from "@/lib/db/schema"
 import { hashPassword } from "@/lib/auth/password"
+import { uploadSeedImage } from "@/scripts/lib/seedR2"
+import { isR2Configured } from "@/lib/storage/r2"
 
-const OFFICIAL_GROOMS = [
+export const OFFICIAL_GROOMS = [
   {
     phone: "7970094797",
     username: "Sandeep Mewada",
@@ -242,6 +244,20 @@ async function seed() {
   const password = await hashPassword("password123")
 
   for (const groom of OFFICIAL_GROOMS) {
+    let imagePath = groom.image
+    if (isR2Configured) {
+      try {
+        imagePath = await uploadSeedImage(groom.image)
+        console.log(`  📷 ${groom.username} → R2`)
+      } catch (err) {
+        console.warn(`  ⚠️ R2 upload failed for ${groom.image}, keeping local path:`, err)
+      }
+    }
+
+    const groomIndex = OFFICIAL_GROOMS.indexOf(groom)
+    const isSeed = true
+    const featured = groomIndex < 3
+
     const [user] = await db
       .insert(users)
       .values({
@@ -263,8 +279,10 @@ async function seed() {
         userId: user.id,
         type: groom.type as any,
         visible: true,
+        isSeed,
+        featured,
         approvalStatus: "APPROVED",
-        imagePath: groom.image,
+        imagePath,
         dob: groom.dob,
         height: groom.height,
         gotraSelf: groom.gotraSelf,
@@ -287,8 +305,10 @@ async function seed() {
         set: {
           type: groom.type as any,
           visible: true,
+          isSeed,
+          featured,
           approvalStatus: "APPROVED",
-          imagePath: groom.image,
+          imagePath,
           dob: groom.dob,
           height: groom.height,
           gotraSelf: groom.gotraSelf,
@@ -358,7 +378,9 @@ async function seed() {
   console.log("✅ Seeding complete.")
 }
 
-seed().catch((err) => {
-  console.error(err)
-  process.exit(1)
-})
+if (import.meta.main) {
+  seed().catch((err) => {
+    console.error(err)
+    process.exit(1)
+  })
+}

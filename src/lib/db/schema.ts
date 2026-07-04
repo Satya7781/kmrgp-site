@@ -57,6 +57,10 @@ export const profiles = pgTable(
     type: profileTypeEnum("type").notNull(),
     bio: text("bio").default(""),
     visible: boolean("visible").notNull().default(false),
+    /** Official demo/seed profile — admin can bulk-hide when real members join. */
+    isSeed: boolean("is_seed").notNull().default(false),
+    /** Shown in home-page featured section (admin-selected). */
+    featured: boolean("featured").notNull().default(false),
     approvalStatus: approvalStatusEnum("approval_status").notNull().default("SENT"),
     imagePath: varchar("image_path", { length: 500 }),
 
@@ -87,6 +91,8 @@ export const profiles = pgTable(
   (table) => ({
     userIdIdx: index("profiles_user_id_idx").on(table.userId),
     visibleIdx: index("profiles_visible_idx").on(table.visible),
+    featuredIdx: index("profiles_featured_idx").on(table.featured),
+    isSeedIdx: index("profiles_is_seed_idx").on(table.isSeed),
     statusIdx: index("profiles_status_idx").on(table.approvalStatus),
   })
 )

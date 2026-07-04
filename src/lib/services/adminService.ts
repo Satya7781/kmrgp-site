@@ -6,11 +6,21 @@ import { updateApprovalStatus } from "./profileService"
 import { deleteUser } from "./userService"
 import { logAction } from "./auditLogService"
 import { cacheDeletePattern } from "@/lib/cache"
-import type { ActionType } from "@/types"
+import {
+  updateProfilePublicDisplay as updateProfilePublicDisplayRow,
+  hideAllSeedProfiles as hideAllSeedProfilesRows,
+} from "./profileService"
 
-export async function approveUser(adminId: number, targetUserId: number) {
+export interface ApproveUserOptions {
+  showPublic?: boolean
+  featureOnHome?: boolean
+}
+
+export async function approveUser(adminId: number, targetUserId: number, options?: ApproveUserOptions) {
+  const showPublic = options?.showPublic ?? true
+  const featureOnHome = options?.featureOnHome ?? false
   await updateUserApproval(targetUserId, true)
-  await updateApprovalStatus(targetUserId, "APPROVED", true)
+  await updateApprovalStatus(targetUserId, "APPROVED", showPublic, featureOnHome)
   await logAction(adminId, "APPROVE", targetUserId)
   cacheDeletePattern("profiles:")
   cacheDeletePattern("stats:")
@@ -18,7 +28,7 @@ export async function approveUser(adminId: number, targetUserId: number) {
 
 export async function rejectUser(adminId: number, targetUserId: number) {
   await updateUserApproval(targetUserId, false)
-  await updateApprovalStatus(targetUserId, "REJECTED", false)
+  await updateApprovalStatus(targetUserId, "REJECTED", false, false)
   await logAction(adminId, "REJECT", targetUserId)
   cacheDeletePattern("profiles:")
   cacheDeletePattern("stats:")
@@ -35,9 +45,26 @@ export async function deleteUserAsAdmin(adminId: number, targetUserId: number) {
   // Hide the profile first so it disappears from approved listings immediately.
   await db
     .update(profiles)
-    .set({ visible: false, approvalStatus: "REJECTED" })
+    .set({ visible: false, featured: false, approvalStatus: "REJECTED" })
     .where(eq(profiles.userId, targetUserId))
   await deleteUser(targetUserId)
   cacheDeletePattern("profiles:")
   cacheDeletePattern("stats:")
+}
+
+export async function setProfilePublicDisplay(
+  adminId: number,
+  targetUserId: number,
+  patch: { visible?: boolean; featured?: boolean }
+) {
+  await updateProfilePublicDisplayRow(targetUserId, patch)
+  cacheDeletePattern("profiles:")
+  cacheDeletePattern("stats:")
+}
+
+export async function hideAllSeedProfiles(adminId: number) {
+  const count = await hideAllSeedProfilesRows()
+  cacheDeletePattern("profiles:")
+  cacheDeletePattern("stats:")
+  return count
 }

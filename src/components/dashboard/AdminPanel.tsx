@@ -14,6 +14,7 @@ import {
   Trash2,
   Search,
   RotateCcw,
+  LayoutGrid,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -29,6 +30,7 @@ import {
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { AdminReviewModal } from "@/components/dashboard/AdminReviewModal"
 import { ConfirmDeleteDialog } from "@/components/dashboard/ConfirmDeleteDialog"
+import { PublicDisplayPanel } from "@/components/dashboard/PublicDisplayPanel"
 import {
   listPendingRequestsAction,
   listRejectedRequestsAction,
@@ -36,6 +38,7 @@ import {
   approveUserAction,
   rejectUserAction,
   deleteUserAction,
+  type ApproveOptions,
 } from "@/lib/actions/admin"
 import {
   listPendingContactRequestsAction,
@@ -87,8 +90,8 @@ export function AdminPanel() {
     load()
   }, [])
 
-  async function approve(id: number) {
-    const res = await approveUserAction(id)
+  async function approve(id: number, options?: ApproveOptions) {
+    const res = await approveUserAction(id, options)
     if (!res.success) {
       toast.error(res.error)
       return
@@ -204,6 +207,9 @@ export function AdminPanel() {
           </TabsTrigger>
           <TabsTrigger value="contacts">
             {t("admin.contactRequests")} ({contactRequests.length})
+          </TabsTrigger>
+          <TabsTrigger value="public">
+            <LayoutGrid className="mr-1 h-4 w-4" /> {t("admin.publicTab")}
           </TabsTrigger>
         </TabsList>
 
@@ -377,6 +383,10 @@ export function AdminPanel() {
               </Card>
             )}
           </section>
+        </TabsContent>
+
+        <TabsContent value="public">
+          <PublicDisplayPanel />
         </TabsContent>
       </Tabs>
 

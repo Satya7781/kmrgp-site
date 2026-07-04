@@ -1,23 +1,49 @@
 "use client"
 
+import { useState } from "react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { SafeImage } from "@/components/ui/safe-image"
 import { useLang } from "@/lib/i18n/LanguageProvider"
-import { CheckCircle2, X, Trash2, RotateCcw, Phone, MapPin, GraduationCap, Briefcase, Users, Home, Calendar, Ruler } from "lucide-react"
+import type { ApproveOptions } from "@/lib/actions/admin"
+import {
+  CheckCircle2,
+  X,
+  Trash2,
+  RotateCcw,
+  Phone,
+  GraduationCap,
+  Briefcase,
+  Users,
+  Home,
+  Calendar,
+  Ruler,
+  Eye,
+  Star,
+} from "lucide-react"
 import type { PublicProfile } from "@/types"
 
 interface AdminReviewModalProps {
   profile: PublicProfile | null
   open: boolean
   onOpenChange: (open: boolean) => void
-  onApprove: (id: number) => void
+  onApprove: (id: number, options?: ApproveOptions) => void
   onReject: (id: number) => void
   onDelete?: (id: number) => void
 }
 
-export function AdminReviewModal({ profile, open, onOpenChange, onApprove, onReject, onDelete }: AdminReviewModalProps) {
+export function AdminReviewModal({
+  profile,
+  open,
+  onOpenChange,
+  onApprove,
+  onReject,
+  onDelete,
+}: AdminReviewModalProps) {
   const { t } = useLang()
+  const [showPublic, setShowPublic] = useState(true)
+  const [featureOnHome, setFeatureOnHome] = useState(false)
+
   if (!profile) return null
 
   const status = profile.approvalStatus
@@ -26,14 +52,23 @@ export function AdminReviewModal({ profile, open, onOpenChange, onApprove, onRej
   const isApproved = status === "APPROVED"
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog
+      open={open}
+      onOpenChange={(o) => {
+        if (!o) {
+          setShowPublic(true)
+          setFeatureOnHome(false)
+        }
+        onOpenChange(o)
+      }}
+    >
       <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-2xl">
         <DialogHeader>
           <DialogTitle className="font-heading text-2xl font-bold text-maroon">
             {t("admin.reviewTitle")}
           </DialogTitle>
           <DialogDescription>
-            {profile.username} · {profile.type} · {" "}
+            {profile.username} · {profile.type} ·{" "}
             <span
               className={`font-bold ${
                 isPending ? "text-amber-600" : isApproved ? "text-green-600" : "text-red-600"
@@ -41,11 +76,15 @@ export function AdminReviewModal({ profile, open, onOpenChange, onApprove, onRej
             >
               {status}
             </span>
+            {profile.isSeed && (
+              <span className="ml-2 rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold uppercase text-amber-800">
+                {t("admin.seedBadge")}
+              </span>
+            )}
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-5">
-          {/* Photo + headline */}
           <div className="flex items-start gap-4">
             <div className="h-24 w-24 overflow-hidden rounded-2xl border-2 border-gold">
               <SafeImage
@@ -67,11 +106,27 @@ export function AdminReviewModal({ profile, open, onOpenChange, onApprove, onRej
                 <span className="inline-flex items-center gap-1 rounded-full bg-cream-dark px-2 py-1 text-xs font-bold text-maroon">
                   <Calendar className="h-3 w-3" /> {profile.dob}
                 </span>
+                {isApproved && (
+                  <>
+                    <span
+                      className={`inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-bold ${
+                        profile.visible ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-600"
+                      }`}
+                    >
+                      <Eye className="h-3 w-3" />
+                      {profile.visible ? t("admin.onPublic") : t("admin.offPublic")}
+                    </span>
+                    {profile.featured && (
+                      <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-1 text-xs font-bold text-amber-800">
+                        <Star className="h-3 w-3" /> {t("admin.featuredYes")}
+                      </span>
+                    )}
+                  </>
+                )}
               </div>
             </div>
           </div>
 
-          {/* Bio-data grid */}
           <div className="grid gap-3 sm:grid-cols-2">
             <Detail icon={Users} label={t("modal.gotraSelf")} value={profile.gotraSelf} />
             <Detail icon={Users} label={t("modal.gotraMother")} value={profile.gotraMother} />
@@ -87,46 +142,105 @@ export function AdminReviewModal({ profile, open, onOpenChange, onApprove, onRej
             </div>
             <div className="grid gap-2 text-sm sm:grid-cols-2">
               <div>
-                <span className="text-muted-foreground">{t("modal.father")}: </span>{profile.fatherName}
+                <span className="text-muted-foreground">{t("modal.father")}: </span>
+                {profile.fatherName}
               </div>
               <div>
-                <span className="text-muted-foreground">{t("modal.mother")}: </span>{profile.motherName}
+                <span className="text-muted-foreground">{t("modal.mother")}: </span>
+                {profile.motherName}
               </div>
               <div>
-                <span className="text-muted-foreground">{t("modal.brothers")}: </span>{profile.brothers}
+                <span className="text-muted-foreground">{t("modal.brothers")}: </span>
+                {profile.brothers}
               </div>
               <div>
-                <span className="text-muted-foreground">{t("modal.sisters")}: </span>{profile.sisters}
+                <span className="text-muted-foreground">{t("modal.sisters")}: </span>
+                {profile.sisters}
               </div>
               <div className="sm:col-span-2">
                 <span className="text-muted-foreground">{t("modal.parentsOccupation")}: </span>
                 {profile.parentsOccupation}
               </div>
               <div className="sm:col-span-2">
-                <span className="text-muted-foreground">{t("admin.location")}: </span>{profile.address}
+                <span className="text-muted-foreground">{t("admin.location")}: </span>
+                {profile.address}
               </div>
             </div>
           </div>
 
-          {/* Actions */}
+          {(isPending || isRejected) && (
+            <div className="space-y-3 rounded-xl border border-gold-light bg-white p-4">
+              <p className="text-sm font-semibold text-maroon">{t("admin.publicOnApprove")}</p>
+              <label className="flex cursor-pointer items-start gap-3">
+                <input
+                  type="checkbox"
+                  className="mt-1"
+                  checked={showPublic}
+                  onChange={(e) => setShowPublic(e.target.checked)}
+                />
+                <span>
+                  <span className="font-semibold text-maroon">{t("admin.approveShowPublic")}</span>
+                  <span className="mt-0.5 block text-xs text-muted-foreground">{t("admin.approveShowPublicDesc")}</span>
+                </span>
+              </label>
+              <label className="flex cursor-pointer items-start gap-3">
+                <input
+                  type="checkbox"
+                  className="mt-1"
+                  checked={featureOnHome}
+                  disabled={!showPublic}
+                  onChange={(e) => setFeatureOnHome(e.target.checked)}
+                />
+                <span>
+                  <span className="font-semibold text-maroon">{t("admin.approveFeatureHome")}</span>
+                  <span className="mt-0.5 block text-xs text-muted-foreground">{t("admin.approveFeatureHomeDesc")}</span>
+                </span>
+              </label>
+            </div>
+          )}
+
           <div className="flex flex-wrap justify-end gap-2 border-t border-gold-light pt-4">
             {isPending && (
               <>
-                <Button variant="destructive" onClick={() => { onReject(profile.userId); onOpenChange(false) }}>
+                <Button
+                  variant="destructive"
+                  onClick={() => {
+                    onReject(profile.userId)
+                    onOpenChange(false)
+                  }}
+                >
                   <X className="mr-1 h-4 w-4" /> {t("admin.reject")}
                 </Button>
-                <Button className="bg-green-600 hover:bg-green-700" onClick={() => { onApprove(profile.userId); onOpenChange(false) }}>
+                <Button
+                  className="bg-green-600 hover:bg-green-700"
+                  onClick={() => {
+                    onApprove(profile.userId, { showPublic, featureOnHome })
+                    onOpenChange(false)
+                  }}
+                >
                   <CheckCircle2 className="mr-1 h-4 w-4" /> {t("admin.approve")}
                 </Button>
               </>
             )}
             {isRejected && (
-              <Button className="bg-green-600 hover:bg-green-700" onClick={() => { onApprove(profile.userId); onOpenChange(false) }}>
+              <Button
+                className="bg-green-600 hover:bg-green-700"
+                onClick={() => {
+                  onApprove(profile.userId, { showPublic, featureOnHome })
+                  onOpenChange(false)
+                }}
+              >
                 <RotateCcw className="mr-1 h-4 w-4" /> {t("admin.reApprove")}
               </Button>
             )}
             {(isApproved || isRejected) && onDelete && (
-              <Button variant="destructive" onClick={() => { onDelete(profile.userId); onOpenChange(false) }}>
+              <Button
+                variant="destructive"
+                onClick={() => {
+                  onDelete(profile.userId)
+                  onOpenChange(false)
+                }}
+              >
                 <Trash2 className="mr-1 h-4 w-4" /> {t("admin.delete")}
               </Button>
             )}

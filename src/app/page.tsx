@@ -1,6 +1,7 @@
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { HomeClient } from "@/components/home/HomeClient"
+import type { PublicProfile } from "@/types"
 import type { Metadata } from "next"
 
 export const dynamic = "force-dynamic"
@@ -13,11 +14,11 @@ export const metadata: Metadata = {
 }
 
 export default async function HomePage() {
-  let featured = []
+  let featured: PublicProfile[] = []
 
   if (process.env.DATABASE_URL) {
-    const { listApprovedProfiles } = await import("@/lib/services/profileService")
-    featured = (await listApprovedProfiles()).slice(0, 3)
+    const { listFeaturedProfiles } = await import("@/lib/services/profileService")
+    featured = await listFeaturedProfiles(3)
   }
 
   return (
